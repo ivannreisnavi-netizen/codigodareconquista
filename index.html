@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descubra Seu Perfil Emocional — Código da Reconquista</title>
+<meta name="description" content="Quiz gratuito: descubra por que ele se afastou e o que fazer agora. Resultado personalizado em 2 minutos.">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1930614681162199');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card: #1A1A1A;
+    --gold: #C9A96E;
+    --gold-light: #E8C98A;
+    --gold-dark: #A07840;
+    --offwhite: #F5F0EA;
+    --muted: #9A9080;
+    --terra: #E8857A;
+    --sage: #7BAE8A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--offwhite);
+    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── SCREENS ─── */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .screen.active { display: flex; flex-direction: column; align-items: center; }
+
+  /* ─── SCREEN 1: ENTRADA ─── */
+  #screen-entry {
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.12) 0%, transparent 70%);
+  }
+
+  .entry-wrap {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .entry-badge {
+    display: inline-block;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+
+  .entry-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 28px;
+  }
+
+  .entry-logo svg { width: 100%; height: 100%; }
+
+  .entry-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--offwhite);
+    margin-bottom: 20px;
+  }
+
+  .entry-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .entry-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .entry-proof {
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  .entry-proof span {
+    display: inline-block;
+    background: rgba(201,169,110,0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    background-size: 200% 200%;
+    color: #1A1000;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    animation: shimmer 3s ease infinite, pulse 2s ease infinite;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,169,110,0.35);
+  }
+
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: rgba(255,255,255,0.15);
+    transform: skewX(-20deg);
+    animation: btnShine 3s ease infinite;
+  }
+
+  .entry-trust {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .trust-item svg { color: var(--sage); flex-shrink: 0; }
+
+  .entry-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 36px auto;
+  }
+
+  .entry-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  /* ─── SCREEN 2: QUIZ ─── */
+  #screen-quiz {
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .quiz-header {
+    width: 100%;
+    background: var(--dark);
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+    padding: 20px 24px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .quiz-logo-small {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .quiz-logo-small span {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 44px;
+    text-align: right;
+  }
+
+  .quiz-body {
+    width: 100%;
+    max-width: 560px;
+    padding: 40px 24px 60px;
+    margin: 0 auto;
+  }
+
+  .question-wrap {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .question-wrap.active { display: block; }
+
+  .question-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .question-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--offwhite);
+    margin-bottom: 32px;
+  }
+
+  .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option-btn {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--offwhite);
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .option-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .option-btn:hover {
+    border-color: rgba(201,169,110,0.4);
+    transform: translateX(4px);
+  }
+
+  .option-btn:hover::before { opacity: 1; }
+
+  .option-btn.selected {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.1);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: all 0.25s;
+  }
+
+  .option-btn.selected .option-letter {
+    background: var(--gold);
+    color: #1A1000;
+    border-color: var(--gold);
+  }
+
+  /* ─── SCREEN 3: LOADING ─── */
+  #screen-loading {
+    justify-content: center;
+    align-items: center;
+    padding: 40px 24px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
+  }
+
+  .loading-wrap {
+    text-align: center;
+    max-width: 360px;
+  }
+
+  .loading-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    animation: rotateSlow 8s linear infinite;
+  }
+
+  .loading-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--offwhite);
+    margin-bottom: 12px;
+  }
+
+  .loading-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .loading-bar-wrap {
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .loading-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
+    border-radius: 100px;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .loading-phase {
+    font-size: 13px;
+    color: var(--gold);
+    min-height: 20px;
+    transition: opacity 0.3s;
+  }
+
+  .loading-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin: 0 3px;
+    animation: dotBounce 1.2s ease infinite;
+  }
+
+  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  /* ─── SCREEN 4: RESULTADO ─── */
+  #screen-result {
+    justify-content: flex-start;
+    padding: 0 0 60px;
+  }
+
+  .result-hero {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(201,169,110,0.1) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+
+  .result-badge {
+    display: inline-block;
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .result-profile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 700;
+    color: var(--offwhite);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .result-profile-subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .compat-wrap {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .compat-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .compat-label span:first-child {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .compat-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .compat-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .compat-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
+    border-radius: 100px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  }
+
+  .result-body {
+    max-width: 560px;
+    width: 100%;
+    padding: 0 24px;
+    margin: 0 auto;
+  }
+
+  /* CRONÔMETRO */
+  .timer-bar {
+    background: linear-gradient(135deg, #1A0F00, #2A1800);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 28px 0 24px;
+    gap: 12px;
+  }
+
+  .timer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .timer-icon {
+    font-size: 20px;
+    animation: timerPulse 1s ease infinite;
+  }
+
+  .timer-text {
+    font-size: 13px;
+    color: var(--offwhite);
+    line-height: 1.3;
+  }
+
+  .timer-text strong {
+    display: block;
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .timer-count {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  /* SEÇÃO DESCRIÇÃO */
+  .result-section {
+    margin-bottom: 28px;
+  }
+
+  .result-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .result-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,169,110,0.2);
+  }
+
+  .result-desc {
+    font-size: 15px;
+    color: rgba(245,240,234,0.85);
+    line-height: 1.8;
+  }
+
+  .result-desc p + p { margin-top: 14px; }
+
+  /* PROVA SOCIAL */
+  .social-proof-bar {
+    background: rgba(123,174,138,0.08);
+    border: 1px solid rgba(123,174,138,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .social-proof-bar span:first-child { font-size: 20px; }
+
+  .social-proof-text {
+    font-size: 13px;
+    color: var(--sage);
+    line-height: 1.4;
+  }
+
+  .social-proof-text strong { color: var(--offwhite); }
+
+  /* OFERTA */
+  .offer-card {
+    background: var(--card);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .offer-tag {
+    display: inline-block;
+    background: var(--terra);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .offer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--offwhite);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .offer-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .offer-bullets {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .offer-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(245,240,234,0.85);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.4;
+  }
+
+  .offer-bullets li:last-child { border-bottom: none; }
+
+  .bullet-check {
+    color: var(--gold);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .offer-price-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .price-old {
+    font-size: 16px;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .price-new {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .price-new span {
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+  }
+
+  .price-tag {
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-cta {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    background-size: 200% 200%;
+    color: #1A1000;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 22px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    animation: shimmer 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    line-height: 1.3;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(201,169,110,0.4);
+  }
+
+  .btn-cta small {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+
+  .btn-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: rgba(255,255,255,0.15);
+    transform: skewX(-20deg);
+    animation: btnShine 3s ease infinite;
+  }
+
+  /* GARANTIA */
+  .guarantee-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+  }
+
+  .guarantee-icon { font-size: 36px; flex-shrink: 0; }
+
+  .guarantee-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  .guarantee-text strong { color: var(--offwhite); display: block; margin-bottom: 4px; }
+
+  /* DEPOIMENTOS */
+  .testimonials { margin-bottom: 28px; }
+
+  .testimonial-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 13px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    color: rgba(245,240,234,0.8);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid rgba(201,169,110,0.3);
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--offwhite);
+    margin-bottom: 2px;
+  }
+
+  .testimonial-author {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .testimonial-author::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  /* SEGUNDO CTA */
+  .cta-bottom {
+    text-align: center;
+    padding: 0 0 20px;
+  }
+
+  .cta-bottom-text {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  /* ─── ANIMAÇÕES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.3); }
+    50% { box-shadow: 0 0 0 12px rgba(201,169,110,0); }
+  }
+
+  @keyframes btnShine {
+    0% { left: -60%; }
+    100% { left: 150%; }
+  }
+
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes dotBounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes timerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @media (max-width: 400px) {
+    .entry-stats { grid-template-columns: 1fr; }
+    .timer-bar { flex-direction: column; text-align: center; }
+    .timer-count { min-width: auto; text-align: center; }
+  }
+
+  /* ─── SOCIAL PROOF POPUP ─── */
+  .sp-popup {
+    position: fixed;
+    bottom: 24px;
+    left: 16px;
+    z-index: 9999;
+    background: #1A1A1A;
+    border: 1px solid rgba(201,169,110,0.25);
+    border-left: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateX(-120%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .sp-popup.show {
+    transform: translateX(0);
+  }
+
+  .sp-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .sp-content { flex: 1; min-width: 0; }
+
+  .sp-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--offwhite);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sp-action {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  .sp-action span {
+    color: var(--sage);
+    font-weight: 700;
+  }
+
+  .sp-time {
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     TELA 1 — ENTRADA
+══════════════════════════════════════ -->
+<section id="screen-entry" class="screen active">
+  <div class="entry-wrap">
+
+    <div class="entry-badge">✦ Quiz Gratuito · 2 Minutos</div>
+
+    <div class="entry-logo">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="35" stroke="#C9A96E" stroke-width="1" stroke-dasharray="4 2" opacity="0.4"/>
+        <path d="M36 18C36 18 20 26 20 38C20 46.837 27.163 54 36 54C44.837 54 52 46.837 52 38C52 26 36 18 36 18Z" fill="url(#heartGrad)" opacity="0.9"/>
+        <path d="M36 48L34 46C27 39.5 22 35 22 29.5C22 25.36 25.36 22 29.5 22C31.84 22 34.08 23.08 36 24.76C37.92 23.08 40.16 22 42.5 22C46.64 22 50 25.36 50 29.5C50 35 45 39.5 38 46L36 48Z" fill="#C9A96E" opacity="0.95"/>
+        <circle cx="36" cy="36" r="5" fill="#0A0A0A"/>
+        <path d="M34 36H36V32M36 36H38" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="36" cy="39" r="1" fill="#C9A96E"/>
+        <defs>
+          <linearGradient id="heartGrad" x1="20" y1="18" x2="52" y2="54" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2A1800"/>
+            <stop offset="1" stop-color="#1A0F00"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <h1 class="entry-headline">
+      Por que ele se afastou —<br>
+      e <em>o que fazer agora</em>
+    </h1>
+
+    <p class="entry-sub">
+      Responda 5 perguntas e descubra qual padrão emocional está te impedindo de reconectar com ele — e o plano exato para mudar isso.
+    </p>
+
+    <p class="entry-proof">
+      <span>✦ 14.382 mulheres já descobriram o seu perfil</span>
+    </p>
+
+    <button class="btn-primary" onclick="startQuiz()">
+      🔍 Descobrir Meu Perfil Agora
+    </button>
+
+    <div class="entry-trust">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        100% Gratuito
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Resultado em 2 min
+      </div>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Sem cadastro
+      </div>
+    </div>
+
+    <div class="entry-divider"></div>
+
+    <div class="entry-stats">
+      <div class="stat-card">
+        <span class="stat-number">4.9★</span>
+        <div class="stat-label">Avaliação média</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">14k+</span>
+        <div class="stat-label">Mulheres atendidas</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">21d</span>
+        <div class="stat-label">Plano personalizado</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TELA 2 — QUIZ
+══════════════════════════════════════ -->
+<section id="screen-quiz" class="screen">
+
+  <div class="quiz-header">
+    <div class="quiz-logo-small">
+      <span>Código da Reconquista</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">1 de 5</div>
+    </div>
+  </div>
+
+  <div class="quiz-body">
+
+    <!-- PERGUNTA 1 -->
+    <div class="question-wrap active" id="q1">
+      <div class="question-number">Pergunta 1 de 5</div>
+      <h2 class="question-text">Como você descreveria a situação com ele agora?</h2>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOption(this, 1, 'A')">
+          <span class="option-letter">A</span>
+          Ele se afastou sem explicação — sinto que perdi o chão
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'B')">
+          <span class="option-letter">B</span>
+          Terminamos, mas ainda conversamos de vez em quando
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'C')">
+          <span class="option-letter">C</span>
+          Já tentei reconectar, mas não sei se estou fazendo certo
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'D')">
+          <span class="option-letter">D</span>
+          Estamos distantes há um tempo e eu não sei como agir
+        </button>
+      </div>
+    </div>
+
+    <!-- PERGUNTA 2 -->
+    <div class="question-wrap" id="q2">
+      <div class="question-number">Pergunta 2 de 5</div>
+      <h2 class="question-text">Quando você pensa nele, qual é sua reação mais comum?</h2>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOption(this, 2, 'A')">
+          <span class="option-letter">A</span>
+          Fico com ansiedade e fico verificando as redes sociais dele
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'B')">
+          <span class="option-letter">B</span>
+          Fico quieta, guardo tudo para mim e finjo que estou bem
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'C')">
+          <span class="option-letter">C</span>
+          Fico pensando no que eu fiz de errado e tentando consertar
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'D')">
+          <span class="option-letter">D</span>
+          Fico paralisada, sem saber o primeiro passo
+        </button>
+      </div>
+    </div>
+
+    <!-- PERGUNTA 3 -->
+    <div class="question-wrap" id="q3">
+      <div class="question-number">Pergunta 3 de 5</div>
+      <h2 class="question-text">Qual frase mais descreve o que você sente sobre a situação?</h2>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOption(this, 3, 'A')">
+          <span class="option-letter">A</span>
+          "Eu sinto que se eu demonstrar mais amor, ele vai voltar"
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'B')">
+          <span class="option-letter">B</span>
+          "Prefiro esperar do que arriscar e piorar tudo"
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'C')">
+          <span class="option-letter">C</span>
+          "Já tentei várias coisas mas nada funcionou"
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'D')">
+          <span class="option-letter">D</span>
+          "Tenho medo de dar um passo errado e perder para sempre"
+        </button>
+      </div>
+    </div>
+
+    <!-- PERGUNTA 4 -->
+    <div class="question-wrap" id="q4">
+      <div class="question-number">Pergunta 4 de 5</div>
+      <h2 class="question-text">Como você costuma agir quando ele demora para responder?</h2>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOption(this, 4, 'A')">
+          <span class="option-letter">A</span>
+          Mando outra mensagem ou fico ansiosa esperando
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'B')">
+          <span class="option-letter">B</span>
+          Fico quieta mas fico remoendo por dentro
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'C')">
+          <span class="option-letter">C</span>
+          Já aprendi que não devo insistir, mas ainda é difícil
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'D')">
+          <span class="option-letter">D</span>
+          Não consigo nem iniciar o contato, travo antes disso
+        </button>
+      </div>
+    </div>
+
+    <!-- PERGUNTA 5 -->
+    <div class="question-wrap" id="q5">
+      <div class="question-number">Pergunta 5 de 5</div>
+      <h2 class="question-text">O que você mais precisa agora para avançar?</h2>
+      <div class="options-grid">
+        <button class="option-btn" onclick="selectOption(this, 5, 'A')">
+          <span class="option-letter">A</span>
+          Entender por que ele se afastou emocionalmente
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'B')">
+          <span class="option-letter">B</span>
+          Saber o momento certo e como agir sem parecer desesperada
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'C')">
+          <span class="option-letter">C</span>
+          Um plano claro do zero, com o que fazer cada dia
+        </button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'D')">
+          <span class="option-letter">D</span>
+          Coragem e direção para dar o primeiro passo
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TELA 3 — LOADING
+══════════════════════════════════════ -->
+<section id="screen-loading" class="screen">
+  <div class="loading-wrap">
+    <div class="loading-logo">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="35" stroke="#C9A96E" stroke-width="1.5" stroke-dasharray="6 3"/>
+        <path d="M36 48L34 46C27 39.5 22 35 22 29.5C22 25.36 25.36 22 29.5 22C31.84 22 34.08 23.08 36 24.76C37.92 23.08 40.16 22 42.5 22C46.64 22 50 25.36 50 29.5C50 35 45 39.5 38 46L36 48Z" fill="#C9A96E" opacity="0.9"/>
+        <circle cx="36" cy="34" r="4" fill="#0A0A0A"/>
+        <path d="M34.5 34H36V31M36 34H37.5" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="36" cy="36.5" r="0.8" fill="#C9A96E"/>
+      </svg>
+    </div>
+    <h2 class="loading-title">Analisando suas respostas...</h2>
+    <p class="loading-sub">Identificando seu perfil emocional único e preparando seu diagnóstico personalizado.</p>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="loadingBar"></div>
+    </div>
+    <div class="loading-phase" id="loadingPhase">
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TELA 4 — RESULTADO
+══════════════════════════════════════ -->
+<section id="screen-result" class="screen">
+
+  <div class="result-hero">
+    <div class="result-badge">✦ Seu Diagnóstico Personalizado</div>
+    <h2 class="result-profile-name" id="profileName">Apegada Emocional</h2>
+    <p class="result-profile-subtitle" id="profileSubtitle">Seu coração sente demais — e isso tem um padrão</p>
+    <div class="compat-wrap">
+      <div class="compat-label">
+        <span>Compatibilidade com o Método</span>
+        <span class="compat-pct" id="compatPct">91%</span>
+      </div>
+      <div class="compat-bar">
+        <div class="compat-fill" id="compatFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-body">
+
+    <!-- CRONÔMETRO -->
+    <div class="timer-bar">
+      <div class="timer-left">
+        <span class="timer-icon">⏰</span>
+        <div class="timer-text">
+          <strong>Oferta de Lançamento</strong>
+          Essa condição especial expira em
+        </div>
+      </div>
+      <div class="timer-count" id="timerDisplay">10:00</div>
+    </div>
+
+    <!-- DESCRIÇÃO DO PERFIL -->
+    <div class="result-section">
+      <div class="result-section-title">O que isso significa</div>
+      <div class="result-desc" id="profileDesc">
+        <p>Você sente as coisas com uma intensidade que pouquíssimas pessoas conseguem compreender. Quando se conecta com alguém, você se entrega completamente — e quando esse alguém se afasta, a dor é proporcional a essa entrega.</p>
+        <p>O padrão que identificamos nas suas respostas mostra que você tende a interpretar o silêncio dele como rejeição definitiva, quando na maioria dos casos é apenas uma forma masculina de processar emoções. A boa notícia: esse padrão tem solução precisa.</p>
+      </div>
+    </div>
+
+    <!-- PROVA SOCIAL -->
+    <div class="social-proof-bar">
+      <span>💚</span>
+      <div class="social-proof-text">
+        <strong id="proofText">3.847 mulheres com seu perfil</strong> já completaram o método e reportaram mudanças reais em 21 dias.
+      </div>
+    </div>
+
+    <!-- OFERTA -->
+    <div class="offer-card">
+      <div class="offer-tag">🔥 Acesso Imediato</div>
+      <h3 class="offer-title">Código da Reconquista<br>— App Personalizado</h3>
+      <p class="offer-subtitle">O plano de 21 dias criado especificamente para o seu perfil, com ações diárias e mensagens prontas para cada situação.</p>
+
+      <ul class="offer-bullets">
+        <li><span class="bullet-check">✓</span> Plano de 21 dias com ação diária para o seu perfil</li>
+        <li><span class="bullet-check">✓</span> Mensagens prontas para cada situação da reconquista</li>
+        <li><span class="bullet-check">✓</span> Diagnóstico emocional completo do seu padrão</li>
+        <li><span class="bullet-check">✓</span> Acesso vitalício · 100% no celular · Sem download</li>
+      </ul>
+
+      <div class="offer-price-wrap">
+        <span class="price-old">R$97</span>
+        <span class="price-new"><span>R$</span>47</span>
+        <span class="price-tag">51% OFF</span>
+      </div>
+
+      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" onclick="trackCheckout()">
+        🔓 Quero Meu Plano Personalizado
+        <small>Acesso imediato · Garantia de 7 dias</small>
+      </a>
+    </div>
+
+    <!-- GARANTIA -->
+    <div class="guarantee-wrap">
+      <span class="guarantee-icon">🛡️</span>
+      <div class="guarantee-text">
+        <strong>Garantia Incondicional de 7 Dias</strong>
+        Se por qualquer motivo você não ficar satisfeita, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
+      </div>
+    </div>
+
+    <!-- DEPOIMENTOS -->
+    <div class="result-section">
+      <div class="result-section-title">O que elas dizem</div>
+      <div class="testimonials">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="Camila R.PNG" alt="Camila R." class="testimonial-photo">
+            <div>
+              <div class="testimonial-name">Camila R.</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Eu tinha tentado de tudo e só piorava. O quiz me mostrou exatamente o que eu estava fazendo de errado. Segui o plano e na terceira semana ele me mandou mensagem."</p>
+          <div class="testimonial-author">São Paulo, SP</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="Fernanda M.PNG" alt="Fernanda M." class="testimonial-photo">
+            <div>
+              <div class="testimonial-name">Fernanda M.</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"As mensagens prontas foram o que mais me ajudaram. Sempre travo na hora de escrever. Usei a do primeiro contato e ele respondeu na hora."</p>
+          <div class="testimonial-author">Curitiba, PR</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="Juliana S.PNG" alt="Juliana S." class="testimonial-photo">
+            <div>
+              <div class="testimonial-name">Juliana S.</div>
+              <div class="testimonial-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"Achei que seria mais um app genérico. Mas ele identifica seu perfil e dá um plano só para você. No dia 14 já sentia diferença no comportamento dele."</p>
+          <div class="testimonial-author">Belo Horizonte, MG</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="cta-bottom">
+      <p class="cta-bottom-text">Mais de 14.000 mulheres já começaram. Seu plano está esperando por você.</p>
+      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" onclick="trackCheckout()">
+        🔓 Acessar Meu Plano Agora — R$47
+        <small>Garantia de 7 dias · Acesso imediato</small>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+  // ─── STATE ───
+  const answers = {};
+  let currentQuestion = 1;
+  const totalQuestions = 5;
+  let timerInterval = null;
+  let timerSeconds = 600; // 10 minutos
+
+  // ─── PERFIS ───
+  const profiles = {
+    A: {
+      name: 'Apegada Emocional',
+      subtitle: 'Você sente demais — e isso tem um padrão',
+      compat: 91,
+      desc: `<p>Você sente as coisas com uma intensidade que pouquíssimas pessoas conseguem compreender. Quando se conecta com alguém, você se entrega completamente — e quando esse alguém se afasta, a dor é proporcional a essa entrega.</p>
+             <p>O padrão que identificamos nas suas respostas mostra que você tende a interpretar o silêncio dele como rejeição definitiva, quando na maioria dos casos é apenas uma forma masculina de processar emoções. A boa notícia: esse padrão tem solução precisa.</p>`,
+      proof: '3.847 mulheres com seu perfil'
+    },
+    B: {
+      name: 'Silenciosa Passiva',
+      subtitle: 'Você guarda tudo — e ele não consegue te ler',
+      compat: 88,
+      desc: `<p>Você tem o hábito de proteger suas emoções guardando-as para si mesma. Para o mundo exterior, parece que está bem — mas por dentro, a situação te afeta profundamente. Esse distanciamento emocional pode ser interpretado como desinteresse por ele.</p>
+             <p>O padrão nas suas respostas revela que sua principal barreira não é o que você faz, mas o que você não comunica. Homens respondem a sinais claros — e o seu método precisa ajudá-la a transmitir esses sinais da forma certa, sem se expor demais.</p>`,
+      proof: '2.913 mulheres com seu perfil'
+    },
+    C: {
+      name: 'Tentou Tudo',
+      subtitle: 'Você agiu — mas sem o mapa certo',
+      compat: 94,
+      desc: `<p>Você não é do tipo que fica parada esperando. Já tomou atitudes, já tentou se reaproximar — mas algo não encaixou e os resultados não vieram. Isso não significa que você fez tudo errado. Significa que você estava usando ferramentas erradas para um problema muito específico.</p>
+             <p>O que identificamos nas suas respostas é que você tem coragem e iniciativa — dois dos recursos mais valiosos nesse processo. O que falta é direção precisa: saber exatamente o quê, como e quando. Com o plano certo, você já tem a maior parte do caminho percorrido.</p>`,
+      proof: '4.201 mulheres com seu perfil'
+    },
+    D: {
+      name: 'Paralisada pelo Medo',
+      subtitle: 'O medo de errar está te impedindo de começar',
+      compat: 89,
+      desc: `<p>Você sabe que precisa agir, mas o medo de dar um passo errado e piorar tudo te mantém imobilizada. Essa paralisia é muito mais comum do que parece — e ela não é fraqueza. É o instinto de proteção funcionando em excesso.</p>
+             <p>O que as suas respostas revelam é que você tem consciência emocional elevada — você pensa antes de agir. Isso é uma vantagem enorme quando combinada com um plano claro. O método foi desenhado exatamente para pessoas como você: cada ação é pequena, segura e progressiva.</p>`,
+      proof: '3.421 mulheres com seu perfil'
+    }
+  };
+
+  // ─── FUNÇÕES ───
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function startQuiz() {
+    showScreen('screen-quiz');
+    updateProgress(1);
+  }
+
+  function selectOption(btn, questionNum, answer) {
+    // Marca seleção visual
+    const parent = btn.closest('.question-wrap');
+    parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    answers[questionNum] = answer;
+
+    // Dispara pixel na pergunta 3
+    if (questionNum === 3) {
+      fbq('track', 'ViewContent', { content_name: 'Quiz Pergunta 3' });
+    }
+
+    // Avança após 500ms
+    setTimeout(() => {
+      if (questionNum < totalQuestions) {
+        goToQuestion(questionNum + 1);
+      } else {
+        showLoading();
+      }
+    }, 500);
+  }
+
+  function goToQuestion(num) {
+    document.querySelectorAll('.question-wrap').forEach(q => q.classList.remove('active'));
+    document.getElementById('q' + num).classList.add('active');
+    currentQuestion = num;
+    updateProgress(num);
+    window.scrollTo(0, 0);
+  }
+
+  function updateProgress(num) {
+    const pct = ((num - 1) / totalQuestions) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = num + ' de ' + totalQuestions;
+  }
+
+  function showLoading() {
+    showScreen('screen-loading');
+
+    const phases = [
+      'Lendo suas respostas...',
+      'Identificando seu padrão emocional...',
+      'Calculando compatibilidade com o método...',
+      'Preparando seu diagnóstico...',
+      'Quase pronto...'
+    ];
+
+    let progress = 0;
+    let phaseIndex = 0;
+    const bar = document.getElementById('loadingBar');
+    const phase = document.getElementById('loadingPhase');
+
+    const interval = setInterval(() => {
+      progress += Math.random() * 18 + 8;
+      if (progress > 100) progress = 100;
+      bar.style.width = progress + '%';
+
+      if (phaseIndex < phases.length) {
+        phase.textContent = phases[phaseIndex];
+        phaseIndex++;
+      }
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(showResult, 600);
+      }
+    }, 400);
+  }
+
+  function getProfile() {
+    const counts = { A: 0, B: 0, C: 0, D: 0 };
+    Object.values(answers).forEach(a => { if (counts[a] !== undefined) counts[a]++; });
+    return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+  }
+
+  function showResult() {
+    const profileKey = getProfile();
+    const profile = profiles[profileKey];
+
+    document.getElementById('profileName').textContent = profile.name;
+    document.getElementById('profileSubtitle').textContent = profile.subtitle;
+    document.getElementById('compatPct').textContent = profile.compat + '%';
+    document.getElementById('profileDesc').innerHTML = profile.desc;
+    document.getElementById('proofText').textContent = profile.proof;
+
+    showScreen('screen-result');
+
+    // Anima barra de compatibilidade
+    setTimeout(() => {
+      document.getElementById('compatFill').style.width = profile.compat + '%';
+    }, 300);
+
+    // Dispara pixel InitiateCheckout
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Código da Reconquista',
+      value: 47,
+      currency: 'BRL'
+    });
+
+    // Inicia cronômetro
+    startTimer();
+  }
+
+  function startTimer() {
+    const display = document.getElementById('timerDisplay');
+
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+
+      if (timerSeconds <= 0) {
+        clearInterval(timerInterval);
+        timerSeconds = 0;
+      }
+
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      display.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+
+      // Pisca vermelho nos últimos 60s
+      if (timerSeconds <= 60) {
+        display.style.color = '#E8857A';
+      }
+    }, 1000);
+  }
+
+  function trackCheckout() {
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Código da Reconquista',
+      value: 47,
+      currency: 'BRL'
+    });
+  }
+
+  // SOCIAL PROOF
+  const spData = [
+    { name: 'Ana Paula M. · SP', emoji: '💛', action: 'acabou de', detail: 'acessar o plano', time: 'agora' },
+    { name: 'Larissa F. · RJ', emoji: '🌸', action: 'começou o', detail: 'plano de 21 dias', time: '2 min atrás' },
+    { name: 'Camila R. · BH', emoji: '✨', action: 'acabou de', detail: 'descobrir seu perfil', time: 'agora' },
+    { name: 'Fernanda O. · POA', emoji: '💫', action: 'garantiu o', detail: 'acesso por R$47', time: '5 min atrás' },
+    { name: 'Juliana C. · CWB', emoji: '🌺', action: 'acabou de', detail: 'acessar o plano', time: 'agora' },
+    { name: 'Beatriz T. · BSB', emoji: '💎', action: 'começou o', detail: 'plano personalizado', time: '1 min atrás' },
+    { name: 'Priscila N. · SP', emoji: '🌟', action: 'garantiu o', detail: 'acesso por R$47', time: 'agora' },
+    { name: 'Renata K. · RJ', emoji: '💖', action: 'descobriu seu', detail: 'perfil emocional', time: '3 min atrás' },
+    { name: 'Gabriela M. · Campinas', emoji: '🔑', action: 'acabou de', detail: 'acessar o plano', time: 'agora' },
+    { name: 'Vanessa A. · Floripa', emoji: '🌙', action: 'começou o', detail: 'plano de 21 dias', time: '4 min atrás' },
+    { name: 'Thais L. · Salvador', emoji: '💛', action: 'garantiu o', detail: 'acesso por R$47', time: 'agora' },
+    { name: 'Isabela P. · Recife', emoji: '🌸', action: 'acabou de', detail: 'descobrir seu perfil', time: '2 min atrás' },
+    { name: 'Natalia S. · SP', emoji: '✨', action: 'começou o', detail: 'plano personalizado', time: 'agora' },
+    { name: 'Debora C. · Fortaleza', emoji: '💫', action: 'garantiu o', detail: 'acesso por R$47', time: '6 min atrás' },
+    { name: 'Monique R. · Manaus', emoji: '🌺', action: 'acabou de', detail: 'acessar o plano', time: 'agora' },
+  ];
+
+  let spIndex = Math.floor(Math.random() * spData.length);
+
+  function showSocialProof() {
+    const popup = document.getElementById('spPopup');
+    const data = spData[spIndex % spData.length];
+    spIndex++;
+    document.getElementById('spAvatar').textContent = data.emoji;
+    document.getElementById('spName').textContent = data.name;
+    document.getElementById('spAction').innerHTML = data.action + ' <span>' + data.detail + '</span>';
+    document.getElementById('spTime').textContent = data.time;
+    popup.classList.add('show');
+    setTimeout(() => popup.classList.remove('show'), 5000);
+  }
+
+  setTimeout(() => {
+    showSocialProof();
+    setInterval(showSocialProof, Math.random() * 15000 + 30000);
+  }, 8000);
+</script>
+
+<div class="sp-popup" id="spPopup">
+  <div class="sp-avatar" id="spAvatar">💛</div>
+  <div class="sp-content">
+    <div class="sp-name" id="spName">Ana Paula M. · SP</div>
+    <div class="sp-action" id="spAction">acabou de <span>acessar o plano</span></div>
+  </div>
+  <div class="sp-time" id="spTime">agora</div>
+</div>
+
+</body>
+</html>
