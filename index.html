@@ -6,6 +6,15 @@
 <title>Descubra Seu Perfil Emocional — Código da Reconquista</title>
 <meta name="description" content="Quiz gratuito: descubra por que ele se afastou e o que fazer agora. Resultado personalizado em 2 minutos.">
 
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vttfdv22wp");
+</script>
+
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -1474,6 +1483,9 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
   function startQuiz() {
     showScreen('screen-quiz');
     updateProgress(1);
+    // Clarity — funil passo 1
+    clarity('set', 'funil', 'quiz_iniciado');
+    clarity('event', 'quiz_iniciado');
   }
 
   function selectOption(btn, questionNum, answer) {
@@ -1486,6 +1498,8 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     // Dispara pixel na pergunta 3
     if (questionNum === 3) {
       fbq('track', 'ViewContent', { content_name: 'Quiz Pergunta 3' });
+      clarity('set', 'funil', 'pergunta_3');
+      clarity('event', 'quiz_metade');
     }
 
     // Avança após 500ms
@@ -1514,6 +1528,9 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
 
   function showLoading() {
     showScreen('screen-loading');
+    // Clarity — quiz completo
+    clarity('set', 'funil', 'quiz_completo');
+    clarity('event', 'quiz_completo');
 
     const phases = [
       'Lendo suas respostas...',
@@ -1568,6 +1585,11 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       document.getElementById('compatFill').style.width = profile.compat + '%';
     }, 300);
 
+    // Clarity — resultado visto
+    clarity('set', 'funil', 'resultado_visto');
+    clarity('set', 'perfil', profileKey);
+    clarity('event', 'resultado_visto');
+
     // Dispara pixel InitiateCheckout
     fbq('track', 'InitiateCheckout', {
       content_name: 'Código da Reconquista',
@@ -1607,6 +1629,9 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       value: 47,
       currency: 'BRL'
     });
+    // Clarity — clique no CTA (último passo do funil)
+    clarity('set', 'funil', 'cta_clicado');
+    clarity('event', 'cta_checkout_clicado');
   }
 
   // SOCIAL PROOF
