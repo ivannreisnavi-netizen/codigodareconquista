@@ -50,7 +50,6 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -61,7 +60,6 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     overflow-x: hidden;
   }
 
-  /* ─── NOISE TEXTURE ─── */
   body::before {
     content: '';
     position: fixed;
@@ -72,13 +70,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     opacity: 0.4;
   }
 
-  /* ─── SCREENS ─── */
-  .screen {
-    display: none;
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
-  }
+  .screen { display: none; min-height: 100vh; position: relative; z-index: 1; }
   .screen.active { display: flex; flex-direction: column; align-items: center; }
 
   /* ─── SCREEN 1: ENTRADA ─── */
@@ -88,212 +80,105 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.12) 0%, transparent 70%);
   }
 
-  .entry-wrap {
-    max-width: 560px;
-    width: 100%;
-    text-align: center;
-    animation: fadeUp 0.8s ease both;
-  }
+  .entry-wrap { max-width: 560px; width: 100%; text-align: center; animation: fadeUp 0.8s ease both; }
 
   .entry-badge {
     display: inline-block;
     background: rgba(201,169,110,0.12);
     border: 1px solid rgba(201,169,110,0.3);
     color: var(--gold);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    border-radius: 100px;
-    margin-bottom: 32px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 8px 20px; border-radius: 100px; margin-bottom: 32px;
   }
 
-  .entry-logo {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 28px;
-  }
-
+  .entry-logo { width: 72px; height: 72px; margin: 0 auto 28px; }
   .entry-logo svg { width: 100%; height: 100%; }
 
   .entry-headline {
     font-family: 'Playfair Display', serif;
     font-size: clamp(28px, 6vw, 44px);
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--offwhite);
-    margin-bottom: 20px;
+    font-weight: 700; line-height: 1.2;
+    color: var(--offwhite); margin-bottom: 20px;
   }
-
-  .entry-headline em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  .entry-headline em { font-style: italic; color: var(--gold); }
 
   .entry-sub {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-weight: 300;
+    font-size: 16px; color: var(--muted);
+    line-height: 1.7; margin-bottom: 16px; font-weight: 300;
   }
 
   .entry-proof {
-    font-size: 13px;
-    color: var(--gold);
-    margin-bottom: 40px;
-    font-weight: 400;
+    font-size: 13px; color: var(--gold); margin-bottom: 40px;
   }
-
   .entry-proof span {
     display: inline-block;
     background: rgba(201,169,110,0.1);
-    padding: 4px 12px;
-    border-radius: 4px;
+    padding: 4px 12px; border-radius: 4px;
   }
 
   .btn-primary {
-    display: inline-block;
-    width: 100%;
-    max-width: 400px;
+    display: inline-block; width: 100%; max-width: 400px;
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
     background-size: 200% 200%;
     color: #1A1000;
     font-family: 'Lato', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 20px 40px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
+    font-size: 17px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 20px 40px; border: none; border-radius: 8px;
+    cursor: pointer; text-decoration: none;
     animation: shimmer 3s ease infinite, pulse 2s ease infinite;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
   }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(201,169,110,0.35);
-  }
-
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,169,110,0.35); }
   .btn-primary:active { transform: translateY(0); }
-
   .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 40%;
-    height: 200%;
-    background: rgba(255,255,255,0.15);
-    transform: skewX(-20deg);
+    content: ''; position: absolute;
+    top: -50%; left: -60%; width: 40%; height: 200%;
+    background: rgba(255,255,255,0.15); transform: skewX(-20deg);
     animation: btnShine 3s ease infinite;
   }
 
   .entry-trust {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    margin-top: 24px; display: flex;
+    align-items: center; justify-content: center;
+    gap: 20px; flex-wrap: wrap;
   }
 
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
+  .trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
   .trust-item svg { color: var(--sage); flex-shrink: 0; }
 
   .entry-divider {
-    width: 60px;
-    height: 1px;
+    width: 60px; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     margin: 36px auto;
   }
 
-  .entry-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 12px;
-  }
+  .entry-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 12px; }
 
   .stat-card {
     background: var(--card);
     border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 10px;
-    padding: 16px 12px;
-    text-align: center;
+    border-radius: 10px; padding: 16px 12px; text-align: center;
   }
-
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--gold);
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-    line-height: 1.3;
-  }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--gold); display: block; }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.3; }
 
   /* ─── SCREEN 2: QUIZ ─── */
-  #screen-quiz {
-    justify-content: flex-start;
-    padding: 0;
-  }
+  #screen-quiz { justify-content: flex-start; padding: 0; }
 
   .quiz-header {
-    width: 100%;
-    background: var(--dark);
+    width: 100%; background: var(--dark);
     border-bottom: 1px solid rgba(201,169,110,0.1);
-    padding: 20px 24px 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    padding: 20px 24px 0; position: sticky; top: 0; z-index: 10;
   }
 
-  .quiz-logo-small {
-    text-align: center;
-    margin-bottom: 16px;
-  }
+  .quiz-logo-small { text-align: center; margin-bottom: 16px; }
+  .quiz-logo-small span { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
 
-  .quiz-logo-small span {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
+  .progress-wrap { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; }
 
-  .progress-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-bottom: 20px;
-  }
-
-  .progress-bar {
-    flex: 1;
-    height: 4px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-
+  .progress-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 100px; overflow: hidden; }
   .progress-fill {
     height: 100%;
     background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
@@ -301,671 +186,248 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0%;
   }
+  .progress-text { font-size: 12px; color: var(--muted); white-space: nowrap; min-width: 44px; text-align: right; }
 
-  .progress-text {
-    font-size: 12px;
-    color: var(--muted);
-    white-space: nowrap;
-    min-width: 44px;
-    text-align: right;
-  }
+  .quiz-body { width: 100%; max-width: 560px; padding: 40px 24px 60px; margin: 0 auto; }
 
-  .quiz-body {
-    width: 100%;
-    max-width: 560px;
-    padding: 40px 24px 60px;
-    margin: 0 auto;
-  }
-
-  .question-wrap {
-    display: none;
-    animation: fadeUp 0.4s ease both;
-  }
-
+  .question-wrap { display: none; animation: fadeUp 0.4s ease both; }
   .question-wrap.active { display: block; }
 
-  .question-number {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
+  .question-number { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
 
   .question-text {
     font-family: 'Playfair Display', serif;
     font-size: clamp(20px, 4vw, 26px);
-    font-weight: 600;
-    line-height: 1.35;
-    color: var(--offwhite);
-    margin-bottom: 32px;
+    font-weight: 600; line-height: 1.35;
+    color: var(--offwhite); margin-bottom: 32px;
   }
 
-  .options-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .options-grid { display: flex; flex-direction: column; gap: 12px; }
 
   .option-btn {
     background: var(--card);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 18px 20px;
-    text-align: left;
-    cursor: pointer;
+    border-radius: 12px; padding: 18px 20px;
+    text-align: left; cursor: pointer;
     transition: all 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--offwhite);
-    font-size: 15px;
-    font-family: 'Lato', sans-serif;
-    line-height: 1.4;
-    position: relative;
-    overflow: hidden;
+    display: flex; align-items: center; gap: 14px;
+    color: var(--offwhite); font-size: 15px;
+    font-family: 'Lato', sans-serif; line-height: 1.4;
+    position: relative; overflow: hidden;
   }
-
   .option-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(135deg, rgba(201,169,110,0.08), transparent);
-    opacity: 0;
-    transition: opacity 0.25s;
+    opacity: 0; transition: opacity 0.25s;
   }
-
-  .option-btn:hover {
-    border-color: rgba(201,169,110,0.4);
-    transform: translateX(4px);
-  }
-
+  .option-btn:hover { border-color: rgba(201,169,110,0.4); transform: translateX(4px); }
   .option-btn:hover::before { opacity: 1; }
-
-  .option-btn.selected {
-    border-color: var(--gold);
-    background: rgba(201,169,110,0.1);
-    transform: translateX(4px);
-  }
+  .option-btn.selected { border-color: var(--gold); background: rgba(201,169,110,0.1); transform: translateX(4px); }
 
   .option-letter {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     border: 1px solid rgba(201,169,110,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--gold);
-    flex-shrink: 0;
-    transition: all 0.25s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--gold);
+    flex-shrink: 0; transition: all 0.25s;
   }
-
-  .option-btn.selected .option-letter {
-    background: var(--gold);
-    color: #1A1000;
-    border-color: var(--gold);
-  }
+  .option-btn.selected .option-letter { background: var(--gold); color: #1A1000; border-color: var(--gold); }
 
   /* ─── SCREEN 3: LOADING ─── */
   #screen-loading {
-    justify-content: center;
-    align-items: center;
-    padding: 40px 24px;
+    justify-content: center; align-items: center; padding: 40px 24px;
     background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
   }
 
-  .loading-wrap {
-    text-align: center;
-    max-width: 360px;
-  }
+  .loading-wrap { text-align: center; max-width: 360px; }
 
-  .loading-logo {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 32px;
-    animation: rotateSlow 8s linear infinite;
-  }
+  .loading-logo { width: 80px; height: 80px; margin: 0 auto 32px; animation: rotateSlow 8s linear infinite; }
 
-  .loading-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--offwhite);
-    margin-bottom: 12px;
-  }
+  .loading-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--offwhite); margin-bottom: 12px; }
+  .loading-sub { font-size: 14px; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
 
-  .loading-sub {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 40px;
-    line-height: 1.6;
-  }
+  .loading-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 100px; height: 6px; overflow: hidden; margin-bottom: 16px; }
+  .loading-bar-fill { height: 100%; background: linear-gradient(to right, var(--gold-dark), var(--gold-light)); border-radius: 100px; width: 0%; transition: width 0.3s ease; }
 
-  .loading-bar-wrap {
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    height: 6px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-
-  .loading-bar-fill {
-    height: 100%;
-    background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
-    border-radius: 100px;
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-
-  .loading-phase {
-    font-size: 13px;
-    color: var(--gold);
-    min-height: 20px;
-    transition: opacity 0.3s;
-  }
+  .loading-phase { font-size: 13px; color: var(--gold); min-height: 20px; transition: opacity 0.3s; }
 
   .loading-dots span {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    margin: 0 3px;
+    display: inline-block; width: 8px; height: 8px;
+    background: var(--gold); border-radius: 50%; margin: 0 3px;
     animation: dotBounce 1.2s ease infinite;
   }
-
   .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
   .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
 
   /* ─── SCREEN 4: RESULTADO ─── */
-  #screen-result {
-    justify-content: flex-start;
-    padding: 0 0 60px;
-  }
+  #screen-result { justify-content: flex-start; padding: 0 0 60px; }
 
   .result-hero {
     width: 100%;
     background: linear-gradient(180deg, rgba(201,169,110,0.1) 0%, transparent 100%);
     border-bottom: 1px solid rgba(201,169,110,0.12);
-    padding: 40px 24px 32px;
-    text-align: center;
+    padding: 40px 24px 32px; text-align: center;
   }
 
   .result-badge {
     display: inline-block;
     background: rgba(201,169,110,0.15);
     border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 100px;
-    margin-bottom: 20px;
+    color: var(--gold); font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 20px;
   }
 
   .result-profile-name {
     font-family: 'Playfair Display', serif;
     font-size: clamp(26px, 5vw, 38px);
-    font-weight: 700;
-    color: var(--offwhite);
-    margin-bottom: 8px;
-    line-height: 1.2;
+    font-weight: 700; color: var(--offwhite); margin-bottom: 8px; line-height: 1.2;
   }
 
-  .result-profile-subtitle {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 28px;
-    font-style: italic;
-  }
+  .result-profile-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 28px; font-style: italic; }
 
-  .compat-wrap {
-    max-width: 360px;
-    margin: 0 auto;
-  }
+  .compat-wrap { max-width: 360px; margin: 0 auto; }
 
-  .compat-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-  }
+  .compat-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .compat-label span:first-child { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .compat-pct { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
 
-  .compat-label span:first-child {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+  .compat-bar { height: 8px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+  .compat-fill { height: 100%; background: linear-gradient(to right, var(--gold-dark), var(--gold-light)); border-radius: 100px; width: 0%; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; }
 
-  .compat-pct {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--gold);
-  }
-
-  .compat-bar {
-    height: 8px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-
-  .compat-fill {
-    height: 100%;
-    background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
-    border-radius: 100px;
-    width: 0%;
-    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  }
-
-  .result-body {
-    max-width: 560px;
-    width: 100%;
-    padding: 0 24px;
-    margin: 0 auto;
-  }
+  .result-body { max-width: 560px; width: 100%; padding: 0 24px; margin: 0 auto; }
 
   /* CRONÔMETRO */
   .timer-bar {
     background: linear-gradient(135deg, #1A0F00, #2A1800);
     border: 1px solid rgba(201,169,110,0.3);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 28px 0 24px;
-    gap: 12px;
+    border-radius: 12px; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 28px 0 24px; gap: 12px;
   }
+  .timer-left { display: flex; align-items: center; gap: 10px; }
+  .timer-icon { font-size: 20px; animation: timerPulse 1s ease infinite; }
+  .timer-text { font-size: 13px; color: var(--offwhite); line-height: 1.3; }
+  .timer-text strong { display: block; font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .timer-count { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); letter-spacing: 2px; white-space: nowrap; min-width: 80px; text-align: right; }
 
-  .timer-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  /* PREÇO — âncora reforçada */
+  .offer-price-wrap { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .price-old { font-size: 18px; color: var(--muted); text-decoration: line-through; }
+  .price-new { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--gold); }
+  .price-new span { font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 400; }
+  .price-tag {
+    background: var(--terra); color: white;
+    font-size: 13px; font-weight: 700;
+    padding: 6px 14px; border-radius: 4px; letter-spacing: 0.5px;
   }
+  .price-installment { font-size: 12px; color: var(--muted); margin-top: -12px; margin-bottom: 20px; }
+  .price-installment strong { color: var(--sage); }
 
-  .timer-icon {
-    font-size: 20px;
-    animation: timerPulse 1s ease infinite;
-  }
-
-  .timer-text {
-    font-size: 13px;
-    color: var(--offwhite);
-    line-height: 1.3;
-  }
-
-  .timer-text strong {
-    display: block;
-    font-size: 11px;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 2px;
-  }
-
-  .timer-count {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 2px;
-    white-space: nowrap;
-    min-width: 80px;
-    text-align: right;
-  }
-
-  /* SEÇÃO DESCRIÇÃO */
-  .result-section {
-    margin-bottom: 28px;
-  }
-
+  .result-section { margin-bottom: 28px; }
   .result-section-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
   }
+  .result-section-title::after { content: ''; flex: 1; height: 1px; background: rgba(201,169,110,0.2); }
 
-  .result-section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(201,169,110,0.2);
-  }
-
-  .result-desc {
-    font-size: 15px;
-    color: rgba(245,240,234,0.85);
-    line-height: 1.8;
-  }
-
+  .result-desc { font-size: 15px; color: rgba(245,240,234,0.85); line-height: 1.8; }
   .result-desc p + p { margin-top: 14px; }
 
-  /* PROVA SOCIAL */
   .social-proof-bar {
     background: rgba(123,174,138,0.08);
     border: 1px solid rgba(123,174,138,0.2);
-    border-radius: 10px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
+    border-radius: 10px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
   }
-
   .social-proof-bar span:first-child { font-size: 20px; }
-
-  .social-proof-text {
-    font-size: 13px;
-    color: var(--sage);
-    line-height: 1.4;
-  }
-
+  .social-proof-text { font-size: 13px; color: var(--sage); line-height: 1.4; }
   .social-proof-text strong { color: var(--offwhite); }
 
-  /* OFERTA */
   .offer-card {
     background: var(--card);
     border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 16px;
-    padding: 28px 24px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
+    border-radius: 16px; padding: 28px 24px; margin-bottom: 20px;
+    position: relative; overflow: hidden;
   }
+  .offer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
 
-  .offer-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-  }
+  .offer-tag { display: inline-block; background: var(--terra); color: white; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; margin-bottom: 16px; }
 
-  .offer-tag {
-    display: inline-block;
-    background: var(--terra);
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-  }
+  .offer-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--offwhite); margin-bottom: 8px; line-height: 1.3; }
+  .offer-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
 
-  .offer-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--offwhite);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .offer-subtitle {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-
-  .offer-bullets {
-    list-style: none;
-    margin-bottom: 28px;
-  }
-
-  .offer-bullets li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: rgba(245,240,234,0.85);
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    line-height: 1.4;
-  }
-
+  .offer-bullets { list-style: none; margin-bottom: 28px; }
+  .offer-bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(245,240,234,0.85); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.4; }
   .offer-bullets li:last-child { border-bottom: none; }
-
-  .bullet-check {
-    color: var(--gold);
-    font-size: 16px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .offer-price-wrap {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-
-  .price-old {
-    font-size: 16px;
-    color: var(--muted);
-    text-decoration: line-through;
-  }
-
-  .price-new {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--gold);
-  }
-
-  .price-new span {
-    font-size: 18px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-  }
-
-  .price-tag {
-    background: rgba(201,169,110,0.12);
-    border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-  }
+  .bullet-check { color: var(--gold); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 
   .btn-cta {
-    display: block;
-    width: 100%;
+    display: block; width: 100%;
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
     background-size: 200% 200%;
-    color: #1A1000;
-    font-family: 'Lato', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    padding: 22px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
+    color: #1A1000; font-family: 'Lato', sans-serif;
+    font-size: 17px; font-weight: 700;
+    padding: 22px 24px; border: none; border-radius: 10px;
+    cursor: pointer; text-decoration: none; text-align: center;
     animation: shimmer 3s ease infinite;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    line-height: 1.3;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; line-height: 1.3;
   }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(201,169,110,0.4); }
+  .btn-cta small { display: block; font-size: 11px; font-weight: 400; opacity: 0.75; margin-top: 4px; }
+  .btn-cta::after { content: ''; position: absolute; top: -50%; left: -60%; width: 40%; height: 200%; background: rgba(255,255,255,0.15); transform: skewX(-20deg); animation: btnShine 3s ease infinite; }
 
-  .btn-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 48px rgba(201,169,110,0.4);
-  }
-
-  .btn-cta small {
-    display: block;
-    font-size: 11px;
-    font-weight: 400;
-    opacity: 0.75;
-    margin-top: 4px;
-  }
-
-  .btn-cta::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 40%;
-    height: 200%;
-    background: rgba(255,255,255,0.15);
-    transform: skewX(-20deg);
-    animation: btnShine 3s ease infinite;
-  }
-
-  /* GARANTIA */
   .guarantee-wrap {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: flex; align-items: center; gap: 16px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin-bottom: 28px;
+    border-radius: 12px; padding: 18px 20px; margin-bottom: 28px;
   }
-
   .guarantee-icon { font-size: 36px; flex-shrink: 0; }
-
   .guarantee-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
   .guarantee-text strong { color: var(--offwhite); display: block; margin-bottom: 4px; }
 
-  /* DEPOIMENTOS */
   .testimonials { margin-bottom: 28px; }
+  .testimonial-card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+  .testimonial-stars { color: var(--gold); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+  .testimonial-text { font-size: 14px; color: rgba(245,240,234,0.8); line-height: 1.7; font-style: italic; margin-bottom: 12px; }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .testimonial-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: top; border: 2px solid rgba(201,169,110,0.3); flex-shrink: 0; }
+  .testimonial-name { font-size: 14px; font-weight: 700; color: var(--offwhite); margin-bottom: 2px; }
+  .testimonial-author { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .testimonial-author::before { content: ''; width: 16px; height: 1px; background: var(--muted); }
 
-  .testimonial-card {
-    background: var(--card);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
-  }
+  .cta-bottom { text-align: center; padding: 0 0 20px; }
+  .cta-bottom-text { font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
 
-  .testimonial-stars {
-    color: var(--gold);
-    font-size: 13px;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+  /* ─── EMAIL ─── */
+  #screen-email {
+    justify-content: center; padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,169,110,0.1) 0%, transparent 70%);
   }
-
-  .testimonial-text {
-    font-size: 14px;
-    color: rgba(245,240,234,0.8);
-    line-height: 1.7;
-    font-style: italic;
-    margin-bottom: 12px;
-  }
-
-  .testimonial-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .testimonial-photo {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: top;
-    border: 2px solid rgba(201,169,110,0.3);
-    flex-shrink: 0;
-  }
-
-  .testimonial-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--offwhite);
-    margin-bottom: 2px;
-  }
-
-  .testimonial-author {
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .testimonial-author::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background: var(--muted);
-  }
-
-  /* SEGUNDO CTA */
-  .cta-bottom {
-    text-align: center;
-    padding: 0 0 20px;
-  }
-
-  .cta-bottom-text {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
+  .email-wrap { max-width: 480px; width: 100%; text-align: center; animation: fadeUp 0.5s ease both; }
+  .email-icon { font-size: 48px; margin-bottom: 20px; display: block; }
+  .email-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: var(--offwhite); margin-bottom: 12px; line-height: 1.3; }
+  .email-title em { color: var(--gold); font-style: italic; }
+  .email-sub { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+  .email-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+  .email-input { background: var(--card); border: 1px solid rgba(201,169,110,0.25); border-radius: 10px; padding: 18px 20px; font-size: 16px; font-family: 'Lato', sans-serif; color: var(--offwhite); outline: none; transition: border-color 0.2s; text-align: center; }
+  .email-input::placeholder { color: var(--muted); }
+  .email-input:focus { border-color: var(--gold); }
+  .email-privacy { font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .email-skip { background: none; border: none; color: var(--muted); font-size: 12px; cursor: pointer; text-decoration: underline; margin-top: 12px; font-family: 'Lato', sans-serif; }
+  .email-skip:hover { color: var(--offwhite); }
 
   /* ─── ANIMAÇÕES ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.3); }
-    50% { box-shadow: 0 0 0 12px rgba(201,169,110,0); }
-  }
-
-  @keyframes btnShine {
-    0% { left: -60%; }
-    100% { left: 150%; }
-  }
-
-  @keyframes rotateSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes dotBounce {
-    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-    40% { transform: scale(1); opacity: 1; }
-  }
-
-  @keyframes timerPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.3); } 50% { box-shadow: 0 0 0 12px rgba(201,169,110,0); } }
+  @keyframes btnShine { 0% { left: -60%; } 100% { left: 150%; } }
+  @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes dotBounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
+  @keyframes timerPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
   @media (max-width: 400px) {
     .entry-stats { grid-template-columns: 1fr; }
@@ -973,176 +435,33 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     .timer-count { min-width: auto; text-align: center; }
   }
 
-  .live-counter {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 24px;
-    animation: fadeUp 1s ease 0.5s both;
-  }
-
-  .live-dot {
-    animation: timerPulse 1s ease infinite;
-  }
-
-  /* ─── CAPTURA DE EMAIL ─── */
-  #screen-email {
-    justify-content: center;
-    padding: 40px 20px;
-    background: radial-gradient(ellipse at 50% 30%, rgba(201,169,110,0.1) 0%, transparent 70%);
-  }
-
-  .email-wrap {
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
-    animation: fadeUp 0.5s ease both;
-  }
-
-  .email-icon {
-    font-size: 48px;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .email-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 5vw, 32px);
-    font-weight: 700;
-    color: var(--offwhite);
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-
-  .email-title em {
-    color: var(--gold);
-    font-style: italic;
-  }
-
-  .email-sub {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-
-  .email-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  .email-input {
-    background: var(--card);
-    border: 1px solid rgba(201,169,110,0.25);
-    border-radius: 10px;
-    padding: 18px 20px;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    color: var(--offwhite);
-    outline: none;
-    transition: border-color 0.2s;
-    text-align: center;
-  }
-
-  .email-input::placeholder { color: var(--muted); }
-  .email-input:focus { border-color: var(--gold); }
-
-  .email-privacy {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 8px;
-  }
-
-  .email-skip {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 12px;
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 12px;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .email-skip:hover { color: var(--offwhite); }
+  .live-counter { font-size: 13px; color: var(--muted); margin-bottom: 24px; animation: fadeUp 1s ease 0.5s both; }
+  .live-dot { animation: timerPulse 1s ease infinite; }
 
   /* ─── SOCIAL PROOF POPUP ─── */
   .sp-popup {
-    position: fixed;
-    bottom: 24px;
-    left: 16px;
-    z-index: 9999;
-    background: #1A1A1A;
-    border: 1px solid rgba(201,169,110,0.25);
-    border-left: 3px solid var(--gold);
-    border-radius: 10px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    max-width: 280px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    transform: translateX(-120%);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: fixed; bottom: 24px; left: 16px; z-index: 9999;
+    background: #1A1A1A; border: 1px solid rgba(201,169,110,0.25);
+    border-left: 3px solid var(--gold); border-radius: 10px;
+    padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+    max-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateX(-120%); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     pointer-events: none;
   }
-
-  .sp-popup.show {
-    transform: translateX(0);
-  }
-
-  .sp-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
+  .sp-popup.show { transform: translateX(0); }
+  .sp-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
   .sp-content { flex: 1; min-width: 0; }
-
-  .sp-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--offwhite);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .sp-action {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-    line-height: 1.3;
-  }
-
-  .sp-action span {
-    color: var(--sage);
-    font-weight: 700;
-  }
-
-  .sp-time {
-    font-size: 10px;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+  .sp-name { font-size: 13px; font-weight: 700; color: var(--offwhite); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sp-action { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.3; }
+  .sp-action span { color: var(--sage); font-weight: 700; }
+  .sp-time { font-size: 10px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     TELA 1 — ENTRADA
-══════════════════════════════════════ -->
+<!-- TELA 1 — ENTRADA -->
 <section id="screen-entry" class="screen active">
   <div class="entry-wrap">
-
     <div class="entry-badge">✦ Quiz Gratuito · 2 Minutos</div>
 
     <div class="entry-logo">
@@ -1181,6 +500,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       🔍 Fazer o Quiz Gratuito — 2 minutos
     </button>
 
+    <!-- ✅ CORREÇÃO 1: "Sem cadastro" → "Resultado imediato" -->
     <div class="entry-trust">
       <div class="trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1188,192 +508,100 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       </div>
       <div class="trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Resultado em 2 min
+        Resultado imediato
       </div>
       <div class="trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        Sem cadastro
+        Plano personalizado
       </div>
     </div>
 
     <div class="entry-divider"></div>
 
     <div class="entry-stats">
-      <div class="stat-card">
-        <span class="stat-number">4.9★</span>
-        <div class="stat-label">Avaliação média</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">14k+</span>
-        <div class="stat-label">Mulheres atendidas</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">21d</span>
-        <div class="stat-label">Plano personalizado</div>
-      </div>
+      <div class="stat-card"><span class="stat-number">4.9★</span><div class="stat-label">Avaliação média</div></div>
+      <div class="stat-card"><span class="stat-number">14k+</span><div class="stat-label">Mulheres atendidas</div></div>
+      <div class="stat-card"><span class="stat-number">21d</span><div class="stat-label">Plano personalizado</div></div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     TELA 2 — QUIZ
-══════════════════════════════════════ -->
+<!-- TELA 2 — QUIZ -->
 <section id="screen-quiz" class="screen">
-
   <div class="quiz-header">
-    <div class="quiz-logo-small">
-      <span>Código da Reconquista</span>
-    </div>
+    <div class="quiz-logo-small"><span>Código da Reconquista</span></div>
     <div class="progress-wrap">
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
       <div class="progress-text" id="progressText">1 de 5</div>
     </div>
   </div>
 
   <div class="quiz-body">
-
-    <!-- PERGUNTA 1 -->
     <div class="question-wrap active" id="q1">
       <div class="question-number">Pergunta 1 de 5</div>
       <h2 class="question-text">Como você descreveria a situação com ele agora?</h2>
       <div class="options-grid">
-        <button class="option-btn" onclick="selectOption(this, 1, 'A')">
-          <span class="option-letter">A</span>
-          Ele se afastou sem explicação — sinto que perdi o chão
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 1, 'B')">
-          <span class="option-letter">B</span>
-          Terminamos, mas ainda conversamos de vez em quando
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 1, 'C')">
-          <span class="option-letter">C</span>
-          Já tentei reconectar, mas não sei se estou fazendo certo
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 1, 'D')">
-          <span class="option-letter">D</span>
-          Estamos distantes há um tempo e eu não sei como agir
-        </button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'A')"><span class="option-letter">A</span>Ele se afastou sem explicação — sinto que perdi o chão</button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'B')"><span class="option-letter">B</span>Terminamos, mas ainda conversamos de vez em quando</button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'C')"><span class="option-letter">C</span>Já tentei reconectar, mas não sei se estou fazendo certo</button>
+        <button class="option-btn" onclick="selectOption(this, 1, 'D')"><span class="option-letter">D</span>Estamos distantes há um tempo e eu não sei como agir</button>
       </div>
     </div>
 
-    <!-- PERGUNTA 2 -->
     <div class="question-wrap" id="q2">
       <div class="question-number">Pergunta 2 de 5</div>
       <h2 class="question-text">Quando você pensa nele, qual é sua reação mais comum?</h2>
       <div class="options-grid">
-        <button class="option-btn" onclick="selectOption(this, 2, 'A')">
-          <span class="option-letter">A</span>
-          Fico com ansiedade e fico verificando as redes sociais dele
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 2, 'B')">
-          <span class="option-letter">B</span>
-          Fico quieta, guardo tudo para mim e finjo que estou bem
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 2, 'C')">
-          <span class="option-letter">C</span>
-          Fico pensando no que eu fiz de errado e tentando consertar
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 2, 'D')">
-          <span class="option-letter">D</span>
-          Fico paralisada, sem saber o primeiro passo
-        </button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'A')"><span class="option-letter">A</span>Fico com ansiedade e fico verificando as redes sociais dele</button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'B')"><span class="option-letter">B</span>Fico quieta, guardo tudo para mim e finjo que estou bem</button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'C')"><span class="option-letter">C</span>Fico pensando no que eu fiz de errado e tentando consertar</button>
+        <button class="option-btn" onclick="selectOption(this, 2, 'D')"><span class="option-letter">D</span>Fico paralisada, sem saber o primeiro passo</button>
       </div>
     </div>
 
-    <!-- PERGUNTA 3 -->
     <div class="question-wrap" id="q3">
       <div class="question-number">Pergunta 3 de 5</div>
       <h2 class="question-text">Qual frase mais descreve o que você sente sobre a situação?</h2>
       <div class="options-grid">
-        <button class="option-btn" onclick="selectOption(this, 3, 'A')">
-          <span class="option-letter">A</span>
-          "Eu sinto que se eu demonstrar mais amor, ele vai voltar"
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 3, 'B')">
-          <span class="option-letter">B</span>
-          "Prefiro esperar do que arriscar e piorar tudo"
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 3, 'C')">
-          <span class="option-letter">C</span>
-          "Já tentei várias coisas mas nada funcionou"
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 3, 'D')">
-          <span class="option-letter">D</span>
-          "Tenho medo de dar um passo errado e perder para sempre"
-        </button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'A')"><span class="option-letter">A</span>"Eu sinto que se eu demonstrar mais amor, ele vai voltar"</button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'B')"><span class="option-letter">B</span>"Prefiro esperar do que arriscar e piorar tudo"</button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'C')"><span class="option-letter">C</span>"Já tentei várias coisas mas nada funcionou"</button>
+        <button class="option-btn" onclick="selectOption(this, 3, 'D')"><span class="option-letter">D</span>"Tenho medo de dar um passo errado e perder para sempre"</button>
       </div>
     </div>
 
-    <!-- PERGUNTA 4 -->
     <div class="question-wrap" id="q4">
       <div class="question-number">Pergunta 4 de 5</div>
       <h2 class="question-text">Como você costuma agir quando ele demora para responder?</h2>
       <div class="options-grid">
-        <button class="option-btn" onclick="selectOption(this, 4, 'A')">
-          <span class="option-letter">A</span>
-          Mando outra mensagem ou fico ansiosa esperando
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 4, 'B')">
-          <span class="option-letter">B</span>
-          Fico quieta mas fico remoendo por dentro
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 4, 'C')">
-          <span class="option-letter">C</span>
-          Já aprendi que não devo insistir, mas ainda é difícil
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 4, 'D')">
-          <span class="option-letter">D</span>
-          Não consigo nem iniciar o contato, travo antes disso
-        </button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'A')"><span class="option-letter">A</span>Mando outra mensagem ou fico ansiosa esperando</button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'B')"><span class="option-letter">B</span>Fico quieta mas fico remoendo por dentro</button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'C')"><span class="option-letter">C</span>Já aprendi que não devo insistir, mas ainda é difícil</button>
+        <button class="option-btn" onclick="selectOption(this, 4, 'D')"><span class="option-letter">D</span>Não consigo nem iniciar o contato, travo antes disso</button>
       </div>
     </div>
 
-    <!-- PERGUNTA 5 -->
     <div class="question-wrap" id="q5">
       <div class="question-number">Pergunta 5 de 5</div>
       <h2 class="question-text">O que você mais precisa agora para avançar?</h2>
       <div class="options-grid">
-        <button class="option-btn" onclick="selectOption(this, 5, 'A')">
-          <span class="option-letter">A</span>
-          Entender por que ele se afastou emocionalmente
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 5, 'B')">
-          <span class="option-letter">B</span>
-          Saber o momento certo e como agir sem parecer desesperada
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 5, 'C')">
-          <span class="option-letter">C</span>
-          Um plano claro do zero, com o que fazer cada dia
-        </button>
-        <button class="option-btn" onclick="selectOption(this, 5, 'D')">
-          <span class="option-letter">D</span>
-          Coragem e direção para dar o primeiro passo
-        </button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'A')"><span class="option-letter">A</span>Entender por que ele se afastou emocionalmente</button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'B')"><span class="option-letter">B</span>Saber o momento certo e como agir sem parecer desesperada</button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'C')"><span class="option-letter">C</span>Um plano claro do zero, com o que fazer cada dia</button>
+        <button class="option-btn" onclick="selectOption(this, 5, 'D')"><span class="option-letter">D</span>Coragem e direção para dar o primeiro passo</button>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     TELA 2.5 — CAPTURA DE EMAIL
-══════════════════════════════════════ -->
+<!-- TELA 2.5 — CAPTURA EMAIL -->
 <section id="screen-email" class="screen">
   <div class="email-wrap">
     <span class="email-icon">✉️</span>
     <h2 class="email-title">Seu diagnóstico está <em>quase pronto</em></h2>
     <p class="email-sub">Para onde enviamos seu resultado personalizado? Assim você também recebe o plano completo por email — mesmo que feche essa página agora.</p>
     <div class="email-form">
-      <input
-        type="email"
-        id="emailInput"
-        class="email-input"
-        placeholder="Digite seu melhor email"
-        autocomplete="email"
-      >
+      <input type="email" id="emailInput" class="email-input" placeholder="Digite seu melhor email" autocomplete="email">
       <button class="btn-primary" onclick="submitEmail()" style="max-width:100%">
         📩 Ver Meu Diagnóstico Agora
       </button>
@@ -1383,9 +611,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     TELA 3 — LOADING
-══════════════════════════════════════ -->
+<!-- TELA 3 — LOADING -->
 <section id="screen-loading" class="screen">
   <div class="loading-wrap">
     <div class="loading-logo">
@@ -1399,22 +625,15 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     </div>
     <h2 class="loading-title">Analisando suas respostas...</h2>
     <p class="loading-sub">Identificando seu perfil emocional único e preparando seu diagnóstico personalizado.</p>
-    <div class="loading-bar-wrap">
-      <div class="loading-bar-fill" id="loadingBar"></div>
-    </div>
+    <div class="loading-bar-wrap"><div class="loading-bar-fill" id="loadingBar"></div></div>
     <div class="loading-phase" id="loadingPhase">
-      <div class="loading-dots">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="loading-dots"><span></span><span></span><span></span></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     TELA 4 — RESULTADO
-══════════════════════════════════════ -->
+<!-- TELA 4 — RESULTADO -->
 <section id="screen-result" class="screen">
-
   <div class="result-hero">
     <div class="result-badge">✦ Seu Diagnóstico Personalizado</div>
     <h2 class="result-profile-name" id="profileName">Apegada Emocional</h2>
@@ -1424,14 +643,11 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         <span>Compatibilidade com o Método</span>
         <span class="compat-pct" id="compatPct">91%</span>
       </div>
-      <div class="compat-bar">
-        <div class="compat-fill" id="compatFill"></div>
-      </div>
+      <div class="compat-bar"><div class="compat-fill" id="compatFill"></div></div>
     </div>
   </div>
 
   <div class="result-body">
-
     <!-- CRONÔMETRO -->
     <div class="timer-bar">
       <div class="timer-left">
@@ -1447,10 +663,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     <!-- DESCRIÇÃO DO PERFIL -->
     <div class="result-section">
       <div class="result-section-title">O que isso significa</div>
-      <div class="result-desc" id="profileDesc">
-        <p>Você sente as coisas com uma intensidade que pouquíssimas pessoas conseguem compreender. Quando se conecta com alguém, você se entrega completamente — e quando esse alguém se afasta, a dor é proporcional a essa entrega.</p>
-        <p>O padrão que identificamos nas suas respostas mostra que você tende a interpretar o silêncio dele como rejeição definitiva, quando na maioria dos casos é apenas uma forma masculina de processar emoções. A boa notícia: esse padrão tem solução precisa.</p>
-      </div>
+      <div class="result-desc" id="profileDesc"></div>
     </div>
 
     <!-- PROVA SOCIAL -->
@@ -1474,13 +687,16 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         <li><span class="bullet-check">✓</span> Acesso vitalício · 100% no celular · Sem download</li>
       </ul>
 
+      <!-- ✅ CORREÇÃO 4: Âncora de preço reforçada -->
       <div class="offer-price-wrap">
         <span class="price-old">R$97</span>
         <span class="price-new"><span>R$</span>47</span>
         <span class="price-tag">51% OFF</span>
       </div>
+      <p class="price-installment">ou <strong>3x de R$17,08</strong> sem juros no cartão</p>
 
-      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" onclick="trackCheckout()">
+      <!-- ✅ CORREÇÃO 5: CTA personalizado por perfil -->
+      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" id="ctaBtn" onclick="trackCheckout()">
         🔓 Quero Meu Plano Personalizado
         <small>Acesso imediato · Garantia de 7 dias</small>
       </a>
@@ -1501,7 +717,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       <div class="testimonials">
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Camila R.webp" alt="Camila R." class="testimonial-photo">
+            <img src="Camila R.webp" alt="Camila R." class="testimonial-photo" onerror="this.style.display='none'">
             <div>
               <div class="testimonial-name">Camila R.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1512,7 +728,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Fernanda M.webp" alt="Fernanda M." class="testimonial-photo">
+            <img src="Fernanda M.webp" alt="Fernanda M." class="testimonial-photo" onerror="this.style.display='none'">
             <div>
               <div class="testimonial-name">Fernanda M.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1523,7 +739,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Juliana S.webp" alt="Juliana S." class="testimonial-photo">
+            <img src="Juliana S.webp" alt="Juliana S." class="testimonial-photo" onerror="this.style.display='none'">
             <div>
               <div class="testimonial-name">Juliana S.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1538,25 +754,30 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     <!-- CTA FINAL -->
     <div class="cta-bottom">
       <p class="cta-bottom-text">Mais de 14.000 mulheres já começaram. Seu plano está esperando por você.</p>
-      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" onclick="trackCheckout()">
+      <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" id="ctaBtnFinal" onclick="trackCheckout()">
         🔓 Acessar Meu Plano Agora — R$47
         <small>Garantia de 7 dias · Acesso imediato</small>
       </a>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════ -->
+<!-- SOCIAL PROOF POPUP -->
+<div class="sp-popup" id="spPopup">
+  <div class="sp-avatar" id="spAvatar">💛</div>
+  <div class="sp-content">
+    <div class="sp-name" id="spName">Ana Paula M. · SP</div>
+    <div class="sp-action" id="spAction">acabou de <span>acessar o plano</span></div>
+  </div>
+  <div class="sp-time" id="spTime">agora</div>
+</div>
+
 <script>
   // ─── STATE ───
   const answers = {};
   let currentQuestion = 1;
   const totalQuestions = 5;
   let timerInterval = null;
-  let timerSeconds = 600; // 10 minutos
 
   // ─── PERFIS ───
   const profiles = {
@@ -1566,7 +787,10 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       compat: 91,
       desc: `<p>Você sente as coisas com uma intensidade que pouquíssimas pessoas conseguem compreender. Quando se conecta com alguém, você se entrega completamente — e quando esse alguém se afasta, a dor é proporcional a essa entrega.</p>
              <p>O padrão que identificamos nas suas respostas mostra que você tende a interpretar o silêncio dele como rejeição definitiva, quando na maioria dos casos é apenas uma forma masculina de processar emoções. A boa notícia: esse padrão tem solução precisa.</p>`,
-      proof: '3.847 mulheres com seu perfil'
+      proof: '3.847 mulheres com seu perfil',
+      // ✅ CORREÇÃO 5: CTA personalizado por perfil
+      cta: '🔓 Quero Parar de Me Sentir Assim',
+      ctaFinal: '🔓 Quero Parar de Me Sentir Assim — R$47'
     },
     B: {
       name: 'Silenciosa Passiva',
@@ -1574,7 +798,9 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       compat: 88,
       desc: `<p>Você tem o hábito de proteger suas emoções guardando-as para si mesma. Para o mundo exterior, parece que está bem — mas por dentro, a situação te afeta profundamente. Esse distanciamento emocional pode ser interpretado como desinteresse por ele.</p>
              <p>O padrão nas suas respostas revela que sua principal barreira não é o que você faz, mas o que você não comunica. Homens respondem a sinais claros — e o seu método precisa ajudá-la a transmitir esses sinais da forma certa, sem se expor demais.</p>`,
-      proof: '2.913 mulheres com seu perfil'
+      proof: '2.913 mulheres com seu perfil',
+      cta: '🔓 Quero Aprender a Me Comunicar Com Ele',
+      ctaFinal: '🔓 Quero Aprender a Me Comunicar Com Ele — R$47'
     },
     C: {
       name: 'Tentou Tudo',
@@ -1582,7 +808,9 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       compat: 94,
       desc: `<p>Você não é do tipo que fica parada esperando. Já tomou atitudes, já tentou se reaproximar — mas algo não encaixou e os resultados não vieram. Isso não significa que você fez tudo errado. Significa que você estava usando ferramentas erradas para um problema muito específico.</p>
              <p>O que identificamos nas suas respostas é que você tem coragem e iniciativa — dois dos recursos mais valiosos nesse processo. O que falta é direção precisa: saber exatamente o quê, como e quando. Com o plano certo, você já tem a maior parte do caminho percorrido.</p>`,
-      proof: '4.201 mulheres com seu perfil'
+      proof: '4.201 mulheres com seu perfil',
+      cta: '🔓 Quero o Plano que Realmente Funciona',
+      ctaFinal: '🔓 Quero o Plano que Realmente Funciona — R$47'
     },
     D: {
       name: 'Paralisada pelo Medo',
@@ -1590,11 +818,13 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       compat: 89,
       desc: `<p>Você sabe que precisa agir, mas o medo de dar um passo errado e piorar tudo te mantém imobilizada. Essa paralisia é muito mais comum do que parece — e ela não é fraqueza. É o instinto de proteção funcionando em excesso.</p>
              <p>O que as suas respostas revelam é que você tem consciência emocional elevada — você pensa antes de agir. Isso é uma vantagem enorme quando combinada com um plano claro. O método foi desenhado exatamente para pessoas como você: cada ação é pequena, segura e progressiva.</p>`,
-      proof: '3.421 mulheres com seu perfil'
+      proof: '3.421 mulheres com seu perfil',
+      cta: '🔓 Quero Saber o Meu Primeiro Passo',
+      ctaFinal: '🔓 Quero Saber o Meu Primeiro Passo — R$47'
     }
   };
 
-  // ─── FUNÇÕES ───
+  // ─── NAVEGAÇÃO ───
   function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -1604,26 +834,22 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
   function startQuiz() {
     showScreen('screen-quiz');
     updateProgress(1);
-    // Clarity — funil passo 1
     clarity('set', 'funil', 'quiz_iniciado');
     clarity('event', 'quiz_iniciado');
   }
 
   function selectOption(btn, questionNum, answer) {
-    // Marca seleção visual
     const parent = btn.closest('.question-wrap');
     parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     answers[questionNum] = answer;
 
-    // Dispara pixel na pergunta 3
     if (questionNum === 3) {
       fbq('track', 'ViewContent', { content_name: 'Quiz Pergunta 3' });
       clarity('set', 'funil', 'pergunta_3');
       clarity('event', 'quiz_metade');
     }
 
-    // Avança após 500ms
     setTimeout(() => {
       if (questionNum < totalQuestions) {
         goToQuestion(questionNum + 1);
@@ -1651,17 +877,12 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     showScreen('screen-email');
     clarity('set', 'funil', 'email_capture');
     clarity('event', 'email_capture_view');
-    // foca no input após animação
-    setTimeout(() => {
-      const input = document.getElementById('emailInput');
-      if (input) input.focus();
-    }, 600);
+    setTimeout(() => { const i = document.getElementById('emailInput'); if(i) i.focus(); }, 600);
   }
 
   function submitEmail() {
     const email = document.getElementById('emailInput').value.trim();
     if (email && email.includes('@')) {
-      // Salva email no Google Sheets via Apps Script
       saveEmail(email);
       clarity('set', 'email_capturado', 'sim');
       clarity('event', 'email_capturado');
@@ -1677,24 +898,18 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
   }
 
   async function saveEmail(email) {
-    const SHEET_URL = 'https://forminit.com/f/w6wm4bmes9x';
     try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+      await fetch('https://forminit.com/f/w6wm4bmes9x', {
+        method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          perfil: answers[1] || '',
-          data: new Date().toLocaleString('pt-BR')
-        })
+        body: JSON.stringify({ email, perfil: answers[1] || '', data: new Date().toLocaleString('pt-BR') })
       });
     } catch(e) { console.log('Email save failed', e); }
   }
 
+  // ✅ CORREÇÃO 3: Loading mínimo 4 segundos garantido
   function showLoading() {
     showScreen('screen-loading');
-    // Clarity — quiz completo
     clarity('set', 'funil', 'quiz_completo');
     clarity('event', 'quiz_completo');
 
@@ -1706,13 +921,15 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       'Quase pronto...'
     ];
 
+    const MIN_DURATION = 4000; // mínimo 4 segundos
+    const startTime = Date.now();
     let progress = 0;
     let phaseIndex = 0;
     const bar = document.getElementById('loadingBar');
     const phase = document.getElementById('loadingPhase');
 
     const interval = setInterval(() => {
-      progress += Math.random() * 18 + 8;
+      progress += Math.random() * 15 + 6;
       if (progress > 100) progress = 100;
       bar.style.width = progress + '%';
 
@@ -1723,9 +940,11 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
 
       if (progress >= 100) {
         clearInterval(interval);
-        setTimeout(showResult, 600);
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, MIN_DURATION - elapsed);
+        setTimeout(showResult, remaining + 400);
       }
-    }, 400);
+    }, 500);
   }
 
   function getProfile() {
@@ -1744,63 +963,84 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     document.getElementById('profileDesc').innerHTML = profile.desc;
     document.getElementById('proofText').textContent = profile.proof;
 
+    // ✅ CORREÇÃO 5: CTA personalizado por perfil
+    const ctaBtn = document.getElementById('ctaBtn');
+    const ctaBtnFinal = document.getElementById('ctaBtnFinal');
+    ctaBtn.innerHTML = profile.cta + '<small>Acesso imediato · Garantia de 7 dias</small>';
+    ctaBtnFinal.innerHTML = profile.ctaFinal + '<small>Garantia de 7 dias · Acesso imediato</small>';
+
     showScreen('screen-result');
 
-    // Anima barra de compatibilidade
     setTimeout(() => {
       document.getElementById('compatFill').style.width = profile.compat + '%';
     }, 300);
 
-    // Clarity — resultado visto
     clarity('set', 'funil', 'resultado_visto');
     clarity('set', 'perfil', profileKey);
     clarity('event', 'resultado_visto');
 
-    // Dispara pixel InitiateCheckout
     fbq('track', 'InitiateCheckout', {
       content_name: 'Código da Reconquista',
-      value: 47,
-      currency: 'BRL'
+      value: 47, currency: 'BRL'
     });
 
-    // Inicia cronômetro
     startTimer();
   }
 
+  // ✅ CORREÇÃO 2: Timer com sessionStorage — não reinicia se ela voltar
   function startTimer() {
+    const TIMER_KEY = 'cdr_timer_end';
     const display = document.getElementById('timerDisplay');
 
-    timerInterval = setInterval(() => {
-      timerSeconds--;
+    let endTime = sessionStorage.getItem(TIMER_KEY);
 
-      if (timerSeconds <= 0) {
-        clearInterval(timerInterval);
-        timerSeconds = 0;
-      }
+    // Se não existe ou já expirou, cria novo
+    if (!endTime || Date.now() > parseInt(endTime)) {
+      endTime = Date.now() + (10 * 60 * 1000); // 10 minutos
+      sessionStorage.setItem(TIMER_KEY, endTime.toString());
+    }
 
-      const mins = Math.floor(timerSeconds / 60);
-      const secs = timerSeconds % 60;
+    function updateDisplay() {
+      const remaining = Math.max(0, parseInt(endTime) - Date.now());
+      const mins = Math.floor(remaining / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
       display.textContent = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
 
-      // Pisca vermelho nos últimos 60s
-      if (timerSeconds <= 60) {
+      if (remaining <= 60000) {
         display.style.color = '#E8857A';
       }
-    }, 1000);
+
+      if (remaining <= 0) {
+        clearInterval(timerInterval);
+        display.textContent = '00:00';
+      }
+    }
+
+    updateDisplay();
+    timerInterval = setInterval(updateDisplay, 1000);
   }
 
   function trackCheckout() {
-    fbq('track', 'InitiateCheckout', {
-      content_name: 'Código da Reconquista',
-      value: 47,
-      currency: 'BRL'
-    });
-    // Clarity — clique no CTA (último passo do funil)
+    fbq('track', 'InitiateCheckout', { content_name: 'Código da Reconquista', value: 47, currency: 'BRL' });
     clarity('set', 'funil', 'cta_clicado');
     clarity('event', 'cta_checkout_clicado');
   }
 
-  // SOCIAL PROOF
+  // ─── LIVE COUNTER ───
+  function animateLiveCount() {
+    const el = document.getElementById('liveCount');
+    if (!el) return;
+    const base = Math.floor(Math.random() * 30) + 35;
+    el.textContent = base;
+    setInterval(() => {
+      const delta = Math.floor(Math.random() * 5) - 2;
+      const current = parseInt(el.textContent);
+      el.textContent = Math.max(30, Math.min(80, current + delta));
+    }, 8000);
+  }
+  animateLiveCount();
+
+  // ─── SOCIAL PROOF POPUP ───
   const spData = [
     { name: 'Ana Paula M. · SP', emoji: '💛', action: 'acabou de', detail: 'acessar o plano', time: 'agora' },
     { name: 'Larissa F. · RJ', emoji: '🌸', action: 'começou o', detail: 'plano de 21 dias', time: '2 min atrás' },
@@ -1838,15 +1078,6 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     setInterval(showSocialProof, Math.random() * 15000 + 30000);
   }, 8000);
 </script>
-
-<div class="sp-popup" id="spPopup">
-  <div class="sp-avatar" id="spAvatar">💛</div>
-  <div class="sp-content">
-    <div class="sp-name" id="spName">Ana Paula M. · SP</div>
-    <div class="sp-action" id="spAction">acabou de <span>acessar o plano</span></div>
-  </div>
-  <div class="sp-time" id="spTime">agora</div>
-</div>
 
 </body>
 </html>
