@@ -973,6 +973,100 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     .timer-count { min-width: auto; text-align: center; }
   }
 
+  .live-counter {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+
+  .live-dot {
+    animation: timerPulse 1s ease infinite;
+  }
+
+  /* ─── CAPTURA DE EMAIL ─── */
+  #screen-email {
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,169,110,0.1) 0%, transparent 70%);
+  }
+
+  .email-wrap {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .email-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .email-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 700;
+    color: var(--offwhite);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .email-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .email-sub {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .email-input {
+    background: var(--card);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    color: var(--offwhite);
+    outline: none;
+    transition: border-color 0.2s;
+    text-align: center;
+  }
+
+  .email-input::placeholder { color: var(--muted); }
+  .email-input:focus { border-color: var(--gold); }
+
+  .email-privacy {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  .email-skip {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 12px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .email-skip:hover { color: var(--offwhite); }
+
   /* ─── SOCIAL PROOF POPUP ─── */
   .sp-popup {
     position: fixed;
@@ -1074,15 +1168,17 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     </h1>
 
     <p class="entry-sub">
-      Responda 5 perguntas e descubra qual padrão emocional está te impedindo de reconectar com ele — e o plano exato para mudar isso.
+      Responda 5 perguntas e descubra exatamente o que está te impedindo de reconectar com ele — e o que fazer ainda essa semana.
     </p>
 
     <p class="entry-proof">
       <span>✦ 14.382 mulheres já descobriram o seu perfil</span>
     </p>
 
+    <p class="live-counter"><span class="live-dot">🔴</span> <span id="liveCount">47</span> mulheres fazendo o quiz agora</p>
+
     <button class="btn-primary" onclick="startQuiz()">
-      🔍 Descobrir Meu Perfil Agora
+      🔍 Fazer o Quiz Gratuito — 2 minutos
     </button>
 
     <div class="entry-trust">
@@ -1263,6 +1359,31 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
 </section>
 
 <!-- ══════════════════════════════════════
+     TELA 2.5 — CAPTURA DE EMAIL
+══════════════════════════════════════ -->
+<section id="screen-email" class="screen">
+  <div class="email-wrap">
+    <span class="email-icon">✉️</span>
+    <h2 class="email-title">Seu diagnóstico está <em>quase pronto</em></h2>
+    <p class="email-sub">Para onde enviamos seu resultado personalizado? Assim você também recebe o plano completo por email — mesmo que feche essa página agora.</p>
+    <div class="email-form">
+      <input
+        type="email"
+        id="emailInput"
+        class="email-input"
+        placeholder="Digite seu melhor email"
+        autocomplete="email"
+      >
+      <button class="btn-primary" onclick="submitEmail()" style="max-width:100%">
+        📩 Ver Meu Diagnóstico Agora
+      </button>
+    </div>
+    <p class="email-privacy">🔒 Seus dados estão seguros. Sem spam, prometemos.</p>
+    <button class="email-skip" onclick="skipEmail()">Prefiro não receber por email</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
      TELA 3 — LOADING
 ══════════════════════════════════════ -->
 <section id="screen-loading" class="screen">
@@ -1380,7 +1501,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       <div class="testimonials">
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Camila R.PNG" alt="Camila R." class="testimonial-photo">
+            <img src="Camila R.webp" alt="Camila R." class="testimonial-photo">
             <div>
               <div class="testimonial-name">Camila R.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1391,7 +1512,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Fernanda M.PNG" alt="Fernanda M." class="testimonial-photo">
+            <img src="Fernanda M.webp" alt="Fernanda M." class="testimonial-photo">
             <div>
               <div class="testimonial-name">Fernanda M.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1402,7 +1523,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Juliana S.PNG" alt="Juliana S." class="testimonial-photo">
+            <img src="Juliana S.webp" alt="Juliana S." class="testimonial-photo">
             <div>
               <div class="testimonial-name">Juliana S.</div>
               <div class="testimonial-stars">★★★★★</div>
@@ -1507,7 +1628,7 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
       if (questionNum < totalQuestions) {
         goToQuestion(questionNum + 1);
       } else {
-        showLoading();
+        showEmailCapture();
       }
     }, 500);
   }
@@ -1524,6 +1645,51 @@ src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></
     const pct = ((num - 1) / totalQuestions) * 100;
     document.getElementById('progressFill').style.width = pct + '%';
     document.getElementById('progressText').textContent = num + ' de ' + totalQuestions;
+  }
+
+  function showEmailCapture() {
+    showScreen('screen-email');
+    clarity('set', 'funil', 'email_capture');
+    clarity('event', 'email_capture_view');
+    // foca no input após animação
+    setTimeout(() => {
+      const input = document.getElementById('emailInput');
+      if (input) input.focus();
+    }, 600);
+  }
+
+  function submitEmail() {
+    const email = document.getElementById('emailInput').value.trim();
+    if (email && email.includes('@')) {
+      // Salva email no Google Sheets via Apps Script
+      saveEmail(email);
+      clarity('set', 'email_capturado', 'sim');
+      clarity('event', 'email_capturado');
+      fbq('track', 'Lead', { content_name: 'Email Quiz Reconquista' });
+    }
+    showLoading();
+  }
+
+  function skipEmail() {
+    clarity('set', 'email_capturado', 'nao');
+    clarity('event', 'email_pulado');
+    showLoading();
+  }
+
+  async function saveEmail(email) {
+    const SHEET_URL = 'COLE_AQUI_URL_DO_APPS_SCRIPT';
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          perfil: answers[1] || '',
+          data: new Date().toLocaleString('pt-BR')
+        })
+      });
+    } catch(e) { console.log('Email save failed', e); }
   }
 
   function showLoading() {
