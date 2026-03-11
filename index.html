@@ -260,6 +260,13 @@ fbq('track','PageView');
   @keyframes btnShine{0%{left:-60%}100%{left:150%}}
   @keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   @keyframes dotBounce{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
+  .bridge-block{background:linear-gradient(135deg,rgba(201,169,110,0.07),rgba(201,169,110,0.03));border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:24px}
+  .bridge-text{font-size:15px;color:var(--offwhite);line-height:1.8;font-style:italic}
+  .bridge-text strong{color:var(--gold);font-style:normal}
+  .timer-expired{background:rgba(212,117,106,0.12);border:1px solid rgba(212,117,106,0.3);border-radius:10px;padding:12px 16px;text-align:center;font-size:13px;color:#D4756A;margin-top:8px;display:none}
+  .offer-anchor{font-size:12px;color:var(--muted);text-align:center;margin-bottom:4px;letter-spacing:0.5px}
+  .price-context{font-size:12px;color:var(--muted);margin-top:6px;text-align:center;line-height:1.5}
+  .urgency-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:#D4756A;font-weight:600;margin-top:10px;margin-bottom:4px}
   @keyframes timerPulse{0%,100%{opacity:1}50%{opacity:0.5}}
 
   @media(max-width:400px){
@@ -446,11 +453,15 @@ fbq('track','PageView');
   </div>
 
   <div class="result-body">
+    <div class="bridge-block" id="bridgeBlock">
+      <div class="bridge-text" id="bridgeText"></div>
+    </div>
+
     <div class="timer-bar">
       <div class="timer-left">
         <span class="timer-icon">⏰</span>
         <div class="timer-text">
-          <strong>Oferta de Lançamento</strong>
+          <strong>Oferta de Lançamento — Hoje Apenas</strong>
           Essa condição especial expira em
         </div>
       </div>
@@ -479,16 +490,20 @@ fbq('track','PageView');
         <li><span class="bullet-check">✓</span>Diagnóstico emocional completo do seu padrão</li>
         <li><span class="bullet-check">✓</span>Acesso vitalício · 100% no celular · Sem download</li>
       </ul>
+      <p class="offer-anchor">Preço de lançamento — válido apenas enquanto o timer estiver ativo</p>
       <div class="offer-price-wrap">
-        <span class="price-old">R$97</span>
+        <span class="price-old">R$197</span>
         <span class="price-new"><span>R$</span>47</span>
-        <span class="price-tag">51% OFF</span>
+        <span class="price-tag">76% OFF</span>
       </div>
       <p class="price-installment">ou <strong>3x de R$17,08</strong> sem juros no cartão</p>
+      <p class="price-context">Menos que um jantar fora. O plano que pode mudar os próximos 21 dias da sua vida.</p>
+      <div class="urgency-line">🔴 <span id="vagasCount">23</span> acessos restantes nessa condição</div>
       <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" id="ctaBtn" onclick="trackCheckout()">
         🔓 Quero Meu Plano Personalizado
         <small>Acesso imediato · Garantia de 7 dias</small>
       </a>
+      <div class="timer-expired" id="timerExpired">⚠️ O tempo expirou — mas o acesso ainda está disponível por alguns minutos. Garanta agora antes de fechar definitivamente.</div>
     </div>
 
     <div class="guarantee-wrap">
@@ -733,6 +748,27 @@ function showResult(){
   document.getElementById('profileDesc').innerHTML=profile.desc;
   document.getElementById('proofText').textContent=profile.proof;
 
+  // Ponte emocional por perfil
+  const bridges={
+    A:'Esse diagnóstico foi feito <strong>especificamente para você</strong>. O plano que vem a seguir foi criado para o perfil Apegada Emocional — com ações reais para cada dia, para cada situação. Não é teoria. É o que funciona para o seu padrão.',
+    B:'Você não precisa mudar quem você é. O plano foi criado respeitando o seu jeito silencioso — com <strong>ações que funcionam sem você precisar ser quem não é.</strong> Pequenos movimentos que criam grande impacto.',
+    C:'Você já tentou muito. Essa é sua última tentativa — e desta vez com o plano certo para o seu perfil. <strong>Nada do que você fez antes foi errado. Faltava a estratégia correta.</strong>',
+    D:'O primeiro passo é sempre o mais difícil. O plano foi desenhado exatamente para quem está onde você está agora — <strong>com ações pequenas, concretas e seguras</strong> para começar sem medo.'
+  };
+  document.getElementById('bridgeText').innerHTML=bridges[profileKey]||bridges.A;
+
+  // Contador de vagas decrescente (seed por hora para parecer real)
+  const vagasBase=17+Math.floor(new Date().getHours()%8);
+  let vagas=vagasBase;
+  const vagasEl=document.getElementById('vagasCount');
+  if(vagasEl) vagasEl.textContent=vagas;
+  const vagasInterval=setInterval(()=>{
+    if(vagas>7 && Math.random()<0.15){
+      vagas--;
+      if(vagasEl) vagasEl.textContent=vagas;
+    }
+  },12000);
+
   const ctaBtn=document.getElementById('ctaBtn');
   const ctaBtnFinal=document.getElementById('ctaBtnFinal');
   ctaBtn.innerHTML=profile.cta+'<small>Acesso imediato · Garantia de 7 dias</small>';
@@ -776,7 +812,12 @@ function startTimer(){
     const secs=Math.floor((remaining%60000)/1000);
     display.textContent=String(mins).padStart(2,'0')+':'+String(secs).padStart(2,'0');
     if(remaining<=60000) display.style.color='#E8857A';
-    if(remaining<=0){ clearInterval(timerInterval); display.textContent='00:00'; }
+    if(remaining<=0){
+      clearInterval(timerInterval);
+      display.textContent='00:00';
+      const expired=document.getElementById('timerExpired');
+      if(expired) expired.style.display='block';
+    }
   }
 
   updateDisplay();
