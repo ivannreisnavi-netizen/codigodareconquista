@@ -5,39 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Descubra Seu Perfil Emocional — Código da Reconquista</title>
 <meta name="description" content="Quiz gratuito: descubra por que ele se afastou e o que fazer agora. Resultado personalizado em 2 minutos.">
-
+ 
 <!-- ✅ FIX VELOCIDADE: Preconnect + font-display:swap -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet"></noscript>
-
-<!-- Microsoft Clarity -->
-<script>
-(function(c,l,a,r,i,t,y){
-  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window,document,"clarity","script","vttfdv22wp");
-</script>
-
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1930614681162199');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></noscript>
-
+ 
+<!-- Clarity e Pixel movidos para fim do body para não bloquear renderização -->
+ 
 <style>
   /* ✅ FIX VELOCIDADE: font-display swap inline para evitar FOIT */
   @font-face{font-family:'Playfair Display';font-display:swap}
   @font-face{font-family:'Lato';font-display:swap}
-
+ 
   :root{
     --black:#0A0A0A;--dark:#111111;--card:#1A1A1A;
     --gold:#C9A96E;--gold-light:#E8C98A;--gold-dark:#A07840;
@@ -45,18 +26,18 @@ fbq('track','PageView');
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-
+ 
   body{
     background:var(--black);color:var(--offwhite);
     font-family:'Lato',Arial,sans-serif; /* ✅ FIX: fallback Arial evita FOUT */
     min-height:100vh;overflow-x:hidden;
   }
-
+ 
   /* ✅ FIX VELOCIDADE: removido body::before com SVG pesado — era o maior culpado do LCP */
-
+ 
   .screen{display:none;min-height:100vh;position:relative;z-index:1}
   .screen.active{display:flex;flex-direction:column;align-items:center}
-
+ 
   /* ─── SCREEN 1: ENTRADA ─── */
   #screen-entry{
     justify-content:center;padding:40px 20px;
@@ -80,7 +61,7 @@ fbq('track','PageView');
   .entry-sub{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:16px;font-weight:300}
   .entry-proof{font-size:13px;color:var(--gold);margin-bottom:40px}
   .entry-proof span{display:inline-block;background:rgba(201,169,110,0.1);padding:4px 12px;border-radius:4px}
-
+ 
   .btn-primary{
     display:inline-block;width:100%;max-width:400px;
     background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
@@ -88,6 +69,7 @@ fbq('track','PageView');
     font-family:'Lato',Arial,sans-serif;font-size:17px;font-weight:700;letter-spacing:0.5px;
     padding:20px 40px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;
     animation:shimmer 3s ease infinite,pulse 2s ease infinite;
+    will-change:transform,box-shadow;
     position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;
   }
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,169,110,0.35)}
@@ -104,7 +86,7 @@ fbq('track','PageView');
   .stat-card{background:var(--card);border:1px solid rgba(201,169,110,0.15);border-radius:10px;padding:16px 12px;text-align:center}
   .stat-number{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:700;color:var(--gold);display:block}
   .stat-label{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.3}
-
+ 
   /* ─── SCREEN 2: QUIZ ─── */
   #screen-quiz{justify-content:flex-start;padding:0}
   .quiz-header{
@@ -136,14 +118,14 @@ fbq('track','PageView');
   .option-btn.selected{border-color:var(--gold);background:rgba(201,169,110,0.1);transform:translateX(4px)}
   .option-letter{width:32px;height:32px;border-radius:50%;border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--gold);flex-shrink:0;transition:all 0.25s}
   .option-btn.selected .option-letter{background:var(--gold);color:#1A1000;border-color:var(--gold)}
-
+ 
   /* ─── SCREEN 3: LOADING ─── */
   #screen-loading{
     justify-content:center;align-items:center;padding:40px 24px;
     background:radial-gradient(ellipse at 50% 50%,rgba(201,169,110,0.08) 0%,transparent 70%);
   }
   .loading-wrap{text-align:center;max-width:360px}
-  .loading-logo{width:80px;height:80px;margin:0 auto 32px;animation:rotateSlow 8s linear infinite}
+  .loading-logo{width:80px;height:80px;margin:0 auto 32px;animation:rotateSlow 8s linear infinite;will-change:transform}
   .loading-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;color:var(--offwhite);margin-bottom:12px}
   .loading-sub{font-size:14px;color:var(--muted);margin-bottom:40px;line-height:1.6}
   .loading-bar-wrap{background:rgba(255,255,255,0.06);border-radius:100px;height:6px;overflow:hidden;margin-bottom:16px}
@@ -152,7 +134,7 @@ fbq('track','PageView');
   .loading-dots span{display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;margin:0 3px;animation:dotBounce 1.2s ease infinite}
   .loading-dots span:nth-child(2){animation-delay:0.2s}
   .loading-dots span:nth-child(3){animation-delay:0.4s}
-
+ 
   /* ─── SCREEN 4: RESULTADO ─── */
   #screen-result{justify-content:flex-start;padding:0 0 60px}
   .result-hero{width:100%;background:linear-gradient(180deg,rgba(201,169,110,0.1) 0%,transparent 100%);border-bottom:1px solid rgba(201,169,110,0.12);padding:40px 24px 32px;text-align:center}
@@ -166,14 +148,14 @@ fbq('track','PageView');
   .compat-bar{height:8px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
   .compat-fill{height:100%;background:linear-gradient(to right,var(--gold-dark),var(--gold-light));border-radius:100px;width:0%;transition:width 1.5s cubic-bezier(0.4,0,0.2,1) 0.3s}
   .result-body{max-width:560px;width:100%;padding:0 24px;margin:0 auto}
-
+ 
   .timer-bar{background:linear-gradient(135deg,#1A0F00,#2A1800);border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;margin:28px 0 24px;gap:12px}
   .timer-left{display:flex;align-items:center;gap:10px}
   .timer-icon{font-size:20px;animation:timerPulse 1s ease infinite}
   .timer-text{font-size:13px;color:var(--offwhite);line-height:1.3}
   .timer-text strong{display:block;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
   .timer-count{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:700;color:var(--gold);letter-spacing:2px;white-space:nowrap;min-width:80px;text-align:right}
-
+ 
   .offer-price-wrap{display:flex;align-items:center;gap:16px;margin-bottom:20px}
   .price-old{font-size:18px;color:var(--muted);text-decoration:line-through}
   .price-new{font-family:'Playfair Display',Georgia,serif;font-size:42px;font-weight:700;color:var(--gold)}
@@ -181,18 +163,18 @@ fbq('track','PageView');
   .price-tag{background:var(--terra);color:white;font-size:13px;font-weight:700;padding:6px 14px;border-radius:4px;letter-spacing:0.5px}
   .price-installment{font-size:12px;color:var(--muted);margin-top:-12px;margin-bottom:20px}
   .price-installment strong{color:var(--sage)}
-
+ 
   .result-section{margin-bottom:28px}
   .result-section-title{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
   .result-section-title::after{content:'';flex:1;height:1px;background:rgba(201,169,110,0.2)}
   .result-desc{font-size:15px;color:rgba(245,240,234,0.85);line-height:1.8}
   .result-desc p+p{margin-top:14px}
-
+ 
   .social-proof-bar{background:rgba(123,174,138,0.08);border:1px solid rgba(123,174,138,0.2);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;margin-bottom:24px}
   .social-proof-bar span:first-child{font-size:20px}
   .social-proof-text{font-size:13px;color:var(--sage);line-height:1.4}
   .social-proof-text strong{color:var(--offwhite)}
-
+ 
   .offer-card{background:var(--card);border:1px solid rgba(201,169,110,0.2);border-radius:16px;padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden}
   .offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
   .offer-tag{display:inline-block;background:var(--terra);color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:16px}
@@ -202,7 +184,7 @@ fbq('track','PageView');
   .offer-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(245,240,234,0.85);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.4}
   .offer-bullets li:last-child{border-bottom:none}
   .bullet-check{color:var(--gold);font-size:16px;flex-shrink:0;margin-top:1px}
-
+ 
   .btn-cta{
     display:block;width:100%;
     background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 50%,var(--gold) 100%);
@@ -215,12 +197,12 @@ fbq('track','PageView');
   .btn-cta:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,169,110,0.4)}
   .btn-cta small{display:block;font-size:11px;font-weight:400;opacity:0.75;margin-top:4px}
   .btn-cta::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,0.15);transform:skewX(-20deg);animation:btnShine 3s ease infinite}
-
+ 
   .guarantee-wrap{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;margin-bottom:28px}
   .guarantee-icon{font-size:36px;flex-shrink:0}
   .guarantee-text{font-size:13px;color:var(--muted);line-height:1.5}
   .guarantee-text strong{color:var(--offwhite);display:block;margin-bottom:4px}
-
+ 
   .testimonials{margin-bottom:28px}
   .testimonial-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:12px}
   .testimonial-stars{color:var(--gold);font-size:13px;margin-bottom:10px;letter-spacing:2px}
@@ -231,10 +213,10 @@ fbq('track','PageView');
   .testimonial-name{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:2px}
   .testimonial-author{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
   .testimonial-author::before{content:'';width:16px;height:1px;background:var(--muted)}
-
+ 
   .cta-bottom{text-align:center;padding:0 0 20px}
   .cta-bottom-text{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
-
+ 
   /* ─── SCREEN EMAIL ─── */
   #screen-email{
     justify-content:center;padding:40px 20px;
@@ -252,13 +234,13 @@ fbq('track','PageView');
   .email-privacy{font-size:11px;color:var(--muted);margin-top:8px}
   .email-skip{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:12px;font-family:'Lato',Arial,sans-serif}
   .email-skip:hover{color:var(--offwhite)}
-
+ 
   /* ─── ANIMAÇÕES ─── */
-  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
   @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.3)}50%{box-shadow:0 0 0 12px rgba(201,169,110,0)}}
   @keyframes btnShine{0%{left:-60%}100%{left:150%}}
-  @keyframes rotateSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @keyframes rotateSlow{from{transform:rotate3d(0,0,1,0deg)}to{transform:rotate3d(0,0,1,360deg)}}
   @keyframes dotBounce{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
   .bridge-block{background:linear-gradient(135deg,rgba(201,169,110,0.07),rgba(201,169,110,0.03));border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:24px}
   .bridge-text{font-size:15px;color:var(--offwhite);line-height:1.8;font-style:italic}
@@ -268,16 +250,16 @@ fbq('track','PageView');
   .price-context{font-size:12px;color:var(--muted);margin-top:6px;text-align:center;line-height:1.5}
   .urgency-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:#D4756A;font-weight:600;margin-top:10px;margin-bottom:4px}
   @keyframes timerPulse{0%,100%{opacity:1}50%{opacity:0.5}}
-
+ 
   @media(max-width:400px){
     .entry-stats{grid-template-columns:1fr}
     .timer-bar{flex-direction:column;text-align:center}
     .timer-count{min-width:auto;text-align:center}
   }
-
+ 
   .live-counter{font-size:13px;color:var(--muted);margin-bottom:24px;animation:fadeUp 1s ease 0.5s both}
   .live-dot{animation:timerPulse 1s ease infinite}
-
+ 
   /* ─── SOCIAL PROOF POPUP ─── */
   .sp-popup{
     position:fixed;bottom:24px;left:16px;z-index:9999;
@@ -298,7 +280,7 @@ fbq('track','PageView');
 </style>
 </head>
 <body>
-
+ 
 <!-- TELA 1 — ENTRADA -->
 <section id="screen-entry" class="screen active">
   <div class="entry-wrap">
@@ -337,7 +319,7 @@ fbq('track','PageView');
     </div>
   </div>
 </section>
-
+ 
 <!-- TELA 2 — QUIZ -->
 <section id="screen-quiz" class="screen">
   <div class="quiz-header">
@@ -400,7 +382,7 @@ fbq('track','PageView');
     </div>
   </div>
 </section>
-
+ 
 <!-- TELA 2.5 — CAPTURA EMAIL -->
 <section id="screen-email" class="screen">
   <div class="email-wrap">
@@ -415,7 +397,7 @@ fbq('track','PageView');
     <button class="email-skip" onclick="skipEmail()">Prefiro não receber por email</button>
   </div>
 </section>
-
+ 
 <!-- TELA 3 — LOADING -->
 <section id="screen-loading" class="screen">
   <div class="loading-wrap">
@@ -436,7 +418,7 @@ fbq('track','PageView');
     </div>
   </div>
 </section>
-
+ 
 <!-- TELA 4 — RESULTADO -->
 <section id="screen-result" class="screen">
   <div class="result-hero">
@@ -451,12 +433,12 @@ fbq('track','PageView');
       <div class="compat-bar"><div class="compat-fill" id="compatFill"></div></div>
     </div>
   </div>
-
+ 
   <div class="result-body">
     <div class="bridge-block" id="bridgeBlock">
       <div class="bridge-text" id="bridgeText"></div>
     </div>
-
+ 
     <div class="timer-bar">
       <div class="timer-left">
         <span class="timer-icon">⏰</span>
@@ -467,19 +449,19 @@ fbq('track','PageView');
       </div>
       <div class="timer-count" id="timerDisplay">10:00</div>
     </div>
-
+ 
     <div class="result-section">
       <div class="result-section-title">O que isso significa</div>
       <div class="result-desc" id="profileDesc"></div>
     </div>
-
+ 
     <div class="social-proof-bar">
       <span>💚</span>
       <div class="social-proof-text">
         <strong id="proofText">3.847 mulheres com seu perfil</strong> já completaram o método e reportaram mudanças reais em 21 dias.
       </div>
     </div>
-
+ 
     <div class="offer-card">
       <div class="offer-tag">🔥 Acesso Imediato</div>
       <h3 class="offer-title">Código da Reconquista<br>— App Personalizado</h3>
@@ -505,7 +487,7 @@ fbq('track','PageView');
       </a>
       <div class="timer-expired" id="timerExpired">⚠️ O tempo expirou — mas o acesso ainda está disponível por alguns minutos. Garanta agora antes de fechar definitivamente.</div>
     </div>
-
+ 
     <div class="guarantee-wrap">
       <span class="guarantee-icon">🛡️</span>
       <div class="guarantee-text">
@@ -513,7 +495,7 @@ fbq('track','PageView');
         Se por qualquer motivo você não ficar satisfeita, devolvemos 100% do seu investimento. Sem perguntas, sem burocracia.
       </div>
     </div>
-
+ 
     <div class="result-section">
       <div class="result-section-title">O que elas dizem</div>
       <div class="testimonials">
@@ -544,7 +526,7 @@ fbq('track','PageView');
         </div>
       </div>
     </div>
-
+ 
     <div class="cta-bottom">
       <p class="cta-bottom-text">Mais de 14.000 mulheres já começaram. Seu plano está esperando por você.</p>
       <a href="https://pay.kiwify.com.br/7RKpTbe" class="btn-cta" id="ctaBtnFinal" onclick="trackCheckout()">
@@ -554,7 +536,7 @@ fbq('track','PageView');
     </div>
   </div>
 </section>
-
+ 
 <!-- SOCIAL PROOF POPUP -->
 <div class="sp-popup" id="spPopup">
   <div class="sp-avatar" id="spAvatar">💛</div>
@@ -564,7 +546,7 @@ fbq('track','PageView');
   </div>
   <div class="sp-time" id="spTime">agora</div>
 </div>
-
+ 
 <script>
 // ─── HELPER SEGURO para clarity e fbq ───
 function cl(event, key, val){
@@ -578,7 +560,7 @@ function cl(event, key, val){
 function px(event, params){
   try{ if(typeof fbq==='function') fbq('track', event, params||{}); }catch(e){}
 }
-
+ 
 // ─── STATE ───
 const answers = {};
 let currentQuestion = 1;
@@ -586,7 +568,7 @@ const totalQuestions = 5;
 let timerInterval = null;
 // ✅ FIX: timer em memória — fallback para iOS Safari private
 let timerEndTime = null;
-
+ 
 // ─── PERFIS ───
 const profiles = {
   A:{
@@ -618,31 +600,31 @@ const profiles = {
     cta:'🔓 Quero Saber o Meu Primeiro Passo',ctaFinal:'🔓 Quero Saber o Meu Primeiro Passo — R$47'
   }
 };
-
+ 
 // ─── NAVEGAÇÃO ───
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
-
+ 
 function startQuiz(){
   showScreen('screen-quiz');
   updateProgress(1);
   cl('quiz_iniciado','funil','quiz_iniciado');
 }
-
+ 
 function selectOption(btn,questionNum,answer){
   const parent=btn.closest('.question-wrap');
   parent.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');
   answers[questionNum]=answer;
-
+ 
   if(questionNum===3){
     px('ViewContent',{content_name:'Quiz Pergunta 3'});
     cl('quiz_metade','funil','pergunta_3');
   }
-
+ 
   setTimeout(()=>{
     if(questionNum<totalQuestions){
       goToQuestion(questionNum+1);
@@ -651,7 +633,7 @@ function selectOption(btn,questionNum,answer){
     }
   },500);
 }
-
+ 
 function goToQuestion(num){
   document.querySelectorAll('.question-wrap').forEach(q=>q.classList.remove('active'));
   document.getElementById('q'+num).classList.add('active');
@@ -659,19 +641,19 @@ function goToQuestion(num){
   updateProgress(num);
   window.scrollTo(0,0);
 }
-
+ 
 function updateProgress(num){
   const pct=((num-1)/totalQuestions)*100;
   document.getElementById('progressFill').style.width=pct+'%';
   document.getElementById('progressText').textContent=num+' de '+totalQuestions;
 }
-
+ 
 function showEmailCapture(){
   showScreen('screen-email');
   cl('email_capture_view','funil','email_capture');
   setTimeout(()=>{const i=document.getElementById('emailInput');if(i)i.focus();},600);
 }
-
+ 
 function submitEmail(){
   const email=document.getElementById('emailInput').value.trim();
   if(email&&email.includes('@')){
@@ -681,12 +663,12 @@ function submitEmail(){
   }
   showLoading();
 }
-
+ 
 function skipEmail(){
   cl('email_pulado','email_capturado','nao');
   showLoading();
 }
-
+ 
 // ✅ FIX CRÍTICO: Google Forms em vez de Forminit
 async function saveEmail(email){
   try{
@@ -698,11 +680,11 @@ async function saveEmail(email){
     );
   }catch(e){console.log('Email save:',e)}
 }
-
+ 
 function showLoading(){
   showScreen('screen-loading');
   cl('quiz_completo','funil','quiz_completo');
-
+ 
   const phases=[
     'Lendo suas respostas...',
     'Identificando seu padrão emocional...',
@@ -710,14 +692,14 @@ function showLoading(){
     'Preparando seu diagnóstico...',
     'Quase pronto...'
   ];
-
+ 
   const MIN_DURATION=4000;
   const startTime=Date.now();
   let progress=0;
   let phaseIndex=0;
   const bar=document.getElementById('loadingBar');
   const phase=document.getElementById('loadingPhase');
-
+ 
   const interval=setInterval(()=>{
     progress+=Math.random()*15+6;
     if(progress>100)progress=100;
@@ -731,23 +713,23 @@ function showLoading(){
     }
   },500);
 }
-
+ 
 function getProfile(){
   const counts={A:0,B:0,C:0,D:0};
   Object.values(answers).forEach(a=>{if(counts[a]!==undefined)counts[a]++});
   return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
 }
-
+ 
 function showResult(){
   const profileKey=getProfile();
   const profile=profiles[profileKey];
-
+ 
   document.getElementById('profileName').textContent=profile.name;
   document.getElementById('profileSubtitle').textContent=profile.subtitle;
   document.getElementById('compatPct').textContent=profile.compat+'%';
   document.getElementById('profileDesc').innerHTML=profile.desc;
   document.getElementById('proofText').textContent=profile.proof;
-
+ 
   // Ponte emocional por perfil
   const bridges={
     A:'Esse diagnóstico foi feito <strong>especificamente para você</strong>. O plano que vem a seguir foi criado para o perfil Apegada Emocional — com ações reais para cada dia, para cada situação. Não é teoria. É o que funciona para o seu padrão.',
@@ -756,7 +738,7 @@ function showResult(){
     D:'O primeiro passo é sempre o mais difícil. O plano foi desenhado exatamente para quem está onde você está agora — <strong>com ações pequenas, concretas e seguras</strong> para começar sem medo.'
   };
   document.getElementById('bridgeText').innerHTML=bridges[profileKey]||bridges.A;
-
+ 
   // Contador de vagas decrescente (seed por hora para parecer real)
   const vagasBase=17+Math.floor(new Date().getHours()%8);
   let vagas=vagasBase;
@@ -768,36 +750,36 @@ function showResult(){
       if(vagasEl) vagasEl.textContent=vagas;
     }
   },12000);
-
+ 
   const ctaBtn=document.getElementById('ctaBtn');
   const ctaBtnFinal=document.getElementById('ctaBtnFinal');
   ctaBtn.innerHTML=profile.cta+'<small>Acesso imediato · Garantia de 7 dias</small>';
   ctaBtnFinal.innerHTML=profile.ctaFinal+'<small>Garantia de 7 dias · Acesso imediato</small>';
-
+ 
   showScreen('screen-result');
-
+ 
   setTimeout(()=>{document.getElementById('compatFill').style.width=profile.compat+'%';},300);
-
+ 
   cl('resultado_visto','funil','resultado_visto');
   cl('perfil_'+profileKey,'perfil',profileKey);
-
+ 
   // ✅ FIX: InitiateCheckout apenas aqui, não duplicado no clique
   px('InitiateCheckout',{content_name:'Código da Reconquista',value:47,currency:'BRL'});
-
+ 
   startTimer();
 }
-
+ 
 // ✅ FIX: Timer em memória (funciona em iOS Safari private mode)
 function startTimer(){
   const display=document.getElementById('timerDisplay');
-
+ 
   // Usa variável em memória como fonte principal
   if(!timerEndTime || Date.now() > timerEndTime){
     timerEndTime = Date.now() + (10*60*1000);
     // tenta salvar no sessionStorage como backup
     try{ sessionStorage.setItem('cdr_timer_end', timerEndTime.toString()); }catch(e){}
   }
-
+ 
   // Se veio do sessionStorage (recarregou a página)
   try{
     const saved = sessionStorage.getItem('cdr_timer_end');
@@ -805,7 +787,7 @@ function startTimer(){
       timerEndTime = parseInt(saved);
     }
   }catch(e){}
-
+ 
   function updateDisplay(){
     const remaining=Math.max(0, timerEndTime - Date.now());
     const mins=Math.floor(remaining/60000);
@@ -819,16 +801,16 @@ function startTimer(){
       if(expired) expired.style.display='block';
     }
   }
-
+ 
   updateDisplay();
   timerInterval=setInterval(updateDisplay,1000);
 }
-
+ 
 function trackCheckout(){
   // ✅ FIX: apenas Lead event no clique, Purchase não duplicar
   cl('cta_checkout_clicado','funil','cta_clicado');
 }
-
+ 
 // ─── LIVE COUNTER ───
 // ✅ FIX: seed baseado em hora para consistência
 function animateLiveCount(){
@@ -845,7 +827,7 @@ function animateLiveCount(){
   },8000);
 }
 animateLiveCount();
-
+ 
 // ─── SOCIAL PROOF POPUP ───
 const spData=[
   {name:'Ana Paula M. · SP',emoji:'💛',action:'acabou de',detail:'acessar o plano',time:'agora'},
@@ -864,9 +846,9 @@ const spData=[
   {name:'Debora C. · Fortaleza',emoji:'💫',action:'garantiu o',detail:'acesso por R$47',time:'6 min atrás'},
   {name:'Monique R. · Manaus',emoji:'🌺',action:'acabou de',detail:'acessar o plano',time:'agora'},
 ];
-
+ 
 let spIndex=Math.floor(Math.random()*spData.length);
-
+ 
 function showSocialProof(){
   const popup=document.getElementById('spPopup');
   const data=spData[spIndex%spData.length];
@@ -878,11 +860,33 @@ function showSocialProof(){
   popup.classList.add('show');
   setTimeout(()=>popup.classList.remove('show'),5000);
 }
-
+ 
 setTimeout(()=>{
   showSocialProof();
   setInterval(showSocialProof, Math.random()*15000+30000);
 },8000);
 </script>
+ 
+<!-- ✅ FIX VELOCIDADE: Clarity e Pixel no final — não bloqueiam renderização -->
+<script defer>
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","vttfdv22wp");
+</script>
+ 
+<script defer>
+window.addEventListener('load', function(){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1930614681162199');
+  fbq('track','PageView');
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1930614681162199&ev=PageView&noscript=1"/></noscript>
 </body>
 </html>
