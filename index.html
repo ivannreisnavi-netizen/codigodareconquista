@@ -75,8 +75,8 @@
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,169,110,0.35)}
   .btn-primary:active{transform:translateY(0)}
   .btn-primary::after{
-    content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;
-    background:rgba(255,255,255,0.15);transform:skewX(-20deg);animation:btnShine 3s ease infinite;
+    content:'';position:absolute;top:-50%;left:0;width:40%;height:200%;
+    background:rgba(255,255,255,0.15);transform:translateX(-200%) skewX(-20deg);animation:btnShine 3s ease infinite;
   }
   .entry-trust{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
   .trust-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
@@ -196,7 +196,7 @@
   }
   .btn-cta:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,169,110,0.4)}
   .btn-cta small{display:block;font-size:11px;font-weight:400;opacity:0.75;margin-top:4px}
-  .btn-cta::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,0.15);transform:skewX(-20deg);animation:btnShine 3s ease infinite}
+  .btn-cta::after{content:'';position:absolute;top:-50%;left:0;width:40%;height:200%;background:rgba(255,255,255,0.15);transform:translateX(-200%) skewX(-20deg);animation:btnShine 3s ease infinite}
  
   .guarantee-wrap{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;margin-bottom:28px}
   .guarantee-icon{font-size:36px;flex-shrink:0}
@@ -239,7 +239,7 @@
   @keyframes fadeUp{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
   @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,169,110,0.3)}50%{box-shadow:0 0 0 12px rgba(201,169,110,0)}}
-  @keyframes btnShine{0%{left:-60%}100%{left:150%}}
+  @keyframes btnShine{0%{transform:translateX(-200%) skewX(-20deg)}100%{transform:translateX(400%) skewX(-20deg)}}
   @keyframes rotateSlow{from{transform:rotate3d(0,0,1,0deg)}to{transform:rotate3d(0,0,1,360deg)}}
   @keyframes dotBounce{0%,80%,100%{transform:scale(0.6);opacity:0.4}40%{transform:scale(1);opacity:1}}
   .bridge-block{background:linear-gradient(135deg,rgba(201,169,110,0.07),rgba(201,169,110,0.03));border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 20px;margin-bottom:24px}
