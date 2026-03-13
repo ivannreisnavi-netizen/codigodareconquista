@@ -6,16 +6,20 @@
 <title>Descubra Seu Perfil Emocional — Código da Reconquista</title>
 <meta name="description" content="Quiz gratuito: descubra por que ele se afastou e o que fazer agora. Resultado personalizado em 2 minutos.">
  
-<!-- ✅ FIX VELOCIDADE: Preconnect + font-display:swap -->
+<!-- ✅ PRECONNECT: estabelece conexão antes do browser precisar -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
+<!-- ✅ PRELOAD DA FONT CSS: browser descobre o arquivo imediatamente, sem esperar o HTML carregar -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" as="style" crossorigin>
+ 
+<!-- ✅ STYLESHEET: carrega sem bloquear renderização -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700&display=swap" rel="stylesheet"></noscript>
  
 <!-- Clarity e Pixel movidos para fim do body para não bloquear renderização -->
  
 <style>
-  /* ✅ FIX VELOCIDADE: font-display swap inline para evitar FOIT */
   @font-face{font-family:'Playfair Display';font-display:swap}
   @font-face{font-family:'Lato';font-display:swap}
  
@@ -29,11 +33,9 @@
  
   body{
     background:var(--black);color:var(--offwhite);
-    font-family:'Lato',Arial,sans-serif; /* ✅ FIX: fallback Arial evita FOUT */
+    font-family:'Lato',Arial,sans-serif;
     min-height:100vh;overflow-x:hidden;
   }
- 
-  /* ✅ FIX VELOCIDADE: removido body::before com SVG pesado — era o maior culpado do LCP */
  
   .screen{display:none;min-height:100vh;position:relative;z-index:1}
   .screen.active{display:flex;flex-direction:column;align-items:center}
@@ -203,13 +205,20 @@
   .guarantee-text{font-size:13px;color:var(--muted);line-height:1.5}
   .guarantee-text strong{color:var(--offwhite);display:block;margin-bottom:4px}
  
+  /* ✅ FIX LCP: foto do depoimento como div com inicial — zero request, zero LCP impact */
   .testimonials{margin-bottom:28px}
   .testimonial-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:12px}
   .testimonial-stars{color:var(--gold);font-size:13px;margin-bottom:10px;letter-spacing:2px}
   .testimonial-text{font-size:14px;color:rgba(245,240,234,0.8);line-height:1.7;font-style:italic;margin-bottom:12px}
   .testimonial-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-  /* ✅ FIX VELOCIDADE: dimensões explícitas evitam layout shift (CLS) */
-  .testimonial-photo{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid rgba(201,169,110,0.3);flex-shrink:0}
+  .testimonial-avatar{
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(201,169,110,0.12);
+    border:2px solid rgba(201,169,110,0.3);
+    flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:20px;font-weight:700;color:var(--gold);
+  }
   .testimonial-name{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:2px}
   .testimonial-author{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
   .testimonial-author::before{content:'';width:16px;height:1px;background:var(--muted)}
@@ -499,10 +508,10 @@
     <div class="result-section">
       <div class="result-section-title">O que elas dizem</div>
       <div class="testimonials">
+        <!-- ✅ FIX LCP: div com inicial no lugar de img — elimina 3 requests com falha e layout shift -->
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <!-- ✅ FIX: width/height explícitos evitam CLS -->
-            <img src="Camila R.webp" alt="Camila R." class="testimonial-photo" width="48" height="48" loading="lazy" onerror="this.style.display='none'">
+            <div class="testimonial-avatar">C</div>
             <div><div class="testimonial-name">Camila R.</div><div class="testimonial-stars">★★★★★</div></div>
           </div>
           <p class="testimonial-text">"Eu tinha tentado de tudo e só piorava. O quiz me mostrou exatamente o que eu estava fazendo de errado. Segui o plano e na terceira semana ele me mandou mensagem."</p>
@@ -510,7 +519,7 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Fernanda M.webp" alt="Fernanda M." class="testimonial-photo" width="48" height="48" loading="lazy" onerror="this.style.display='none'">
+            <div class="testimonial-avatar">F</div>
             <div><div class="testimonial-name">Fernanda M.</div><div class="testimonial-stars">★★★★★</div></div>
           </div>
           <p class="testimonial-text">"As mensagens prontas foram o que mais me ajudaram. Sempre travo na hora de escrever. Usei a do primeiro contato e ele respondeu na hora."</p>
@@ -518,7 +527,7 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-header">
-            <img src="Juliana S.webp" alt="Juliana S." class="testimonial-photo" width="48" height="48" loading="lazy" onerror="this.style.display='none'">
+            <div class="testimonial-avatar">J</div>
             <div><div class="testimonial-name">Juliana S.</div><div class="testimonial-stars">★★★★★</div></div>
           </div>
           <p class="testimonial-text">"Achei que seria mais um app genérico. Mas ele identifica seu perfil e dá um plano só para você. No dia 14 já sentia diferença no comportamento dele."</p>
@@ -548,29 +557,20 @@
 </div>
  
 <script>
-// ─── HELPER SEGURO para clarity e fbq ───
-function cl(event, key, val){
-  try{
-    if(typeof clarity==='function'){
-      if(key) clarity('set', key, val);
-      clarity('event', event);
-    }
-  }catch(e){}
+function cl(event,key,val){
+  try{if(typeof clarity==='function'){if(key)clarity('set',key,val);clarity('event',event);}}catch(e){}
 }
-function px(event, params){
-  try{ if(typeof fbq==='function') fbq('track', event, params||{}); }catch(e){}
+function px(event,params){
+  try{if(typeof fbq==='function')fbq('track',event,params||{});}catch(e){}
 }
  
-// ─── STATE ───
-const answers = {};
-let currentQuestion = 1;
-const totalQuestions = 5;
-let timerInterval = null;
-// ✅ FIX: timer em memória — fallback para iOS Safari private
-let timerEndTime = null;
+const answers={};
+let currentQuestion=1;
+const totalQuestions=5;
+let timerInterval=null;
+let timerEndTime=null;
  
-// ─── PERFIS ───
-const profiles = {
+const profiles={
   A:{
     name:'Apegada Emocional',subtitle:'Você sente demais — e isso tem um padrão',compat:91,
     desc:`<p>Você sente as coisas com uma intensidade que pouquíssimas pessoas conseguem compreender. Quando se conecta com alguém, você se entrega completamente — e quando esse alguém se afasta, a dor é proporcional a essa entrega.</p>
@@ -601,7 +601,6 @@ const profiles = {
   }
 };
  
-// ─── NAVEGAÇÃO ───
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -619,18 +618,13 @@ function selectOption(btn,questionNum,answer){
   parent.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');
   answers[questionNum]=answer;
- 
   if(questionNum===3){
     px('ViewContent',{content_name:'Quiz Pergunta 3'});
     cl('quiz_metade','funil','pergunta_3');
   }
- 
   setTimeout(()=>{
-    if(questionNum<totalQuestions){
-      goToQuestion(questionNum+1);
-    }else{
-      showEmailCapture();
-    }
+    if(questionNum<totalQuestions){goToQuestion(questionNum+1);}
+    else{showEmailCapture();}
   },500);
 }
  
@@ -669,14 +663,13 @@ function skipEmail(){
   showLoading();
 }
  
-// ✅ FIX CRÍTICO: Google Forms em vez de Forminit
 async function saveEmail(email){
   try{
     const formData=new FormData();
-    formData.append('entry.1386320751', email);
+    formData.append('entry.1386320751',email);
     await fetch(
       'https://docs.google.com/forms/d/e/1FAIpQLSfBCXiZ_DgGNGX3cBNwJ5bfCw1V82TQrp_TXBjI-Qx1e10njw/formResponse',
-      {method:'POST', mode:'no-cors', body:formData}
+      {method:'POST',mode:'no-cors',body:formData}
     );
   }catch(e){console.log('Email save:',e)}
 }
@@ -684,22 +677,13 @@ async function saveEmail(email){
 function showLoading(){
   showScreen('screen-loading');
   cl('quiz_completo','funil','quiz_completo');
- 
-  const phases=[
-    'Lendo suas respostas...',
-    'Identificando seu padrão emocional...',
-    'Calculando compatibilidade com o método...',
-    'Preparando seu diagnóstico...',
-    'Quase pronto...'
-  ];
- 
+  const phases=['Lendo suas respostas...','Identificando seu padrão emocional...','Calculando compatibilidade com o método...','Preparando seu diagnóstico...','Quase pronto...'];
   const MIN_DURATION=4000;
   const startTime=Date.now();
   let progress=0;
   let phaseIndex=0;
   const bar=document.getElementById('loadingBar');
   const phase=document.getElementById('loadingPhase');
- 
   const interval=setInterval(()=>{
     progress+=Math.random()*15+6;
     if(progress>100)progress=100;
@@ -716,21 +700,19 @@ function showLoading(){
  
 function getProfile(){
   const counts={A:0,B:0,C:0,D:0};
-  Object.values(answers).forEach(a=>{if(counts[a]!==undefined)counts[a]++});
+  Object.values(answers).forEach(a=>{if(counts[a]!==undefined)counts[a]++;});
   return Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
 }
  
 function showResult(){
   const profileKey=getProfile();
   const profile=profiles[profileKey];
- 
   document.getElementById('profileName').textContent=profile.name;
   document.getElementById('profileSubtitle').textContent=profile.subtitle;
   document.getElementById('compatPct').textContent=profile.compat+'%';
   document.getElementById('profileDesc').innerHTML=profile.desc;
   document.getElementById('proofText').textContent=profile.proof;
  
-  // Ponte emocional por perfil
   const bridges={
     A:'Esse diagnóstico foi feito <strong>especificamente para você</strong>. O plano que vem a seguir foi criado para o perfil Apegada Emocional — com ações reais para cada dia, para cada situação. Não é teoria. É o que funciona para o seu padrão.',
     B:'Você não precisa mudar quem você é. O plano foi criado respeitando o seu jeito silencioso — com <strong>ações que funcionam sem você precisar ser quem não é.</strong> Pequenos movimentos que criam grande impacto.',
@@ -739,16 +721,12 @@ function showResult(){
   };
   document.getElementById('bridgeText').innerHTML=bridges[profileKey]||bridges.A;
  
-  // Contador de vagas decrescente (seed por hora para parecer real)
   const vagasBase=17+Math.floor(new Date().getHours()%8);
   let vagas=vagasBase;
   const vagasEl=document.getElementById('vagasCount');
-  if(vagasEl) vagasEl.textContent=vagas;
-  const vagasInterval=setInterval(()=>{
-    if(vagas>7 && Math.random()<0.15){
-      vagas--;
-      if(vagasEl) vagasEl.textContent=vagas;
-    }
+  if(vagasEl)vagasEl.textContent=vagas;
+  setInterval(()=>{
+    if(vagas>7&&Math.random()<0.15){vagas--;if(vagasEl)vagasEl.textContent=vagas;}
   },12000);
  
   const ctaBtn=document.getElementById('ctaBtn');
@@ -757,68 +735,52 @@ function showResult(){
   ctaBtnFinal.innerHTML=profile.ctaFinal+'<small>Garantia de 7 dias · Acesso imediato</small>';
  
   showScreen('screen-result');
- 
   setTimeout(()=>{document.getElementById('compatFill').style.width=profile.compat+'%';},300);
  
   cl('resultado_visto','funil','resultado_visto');
   cl('perfil_'+profileKey,'perfil',profileKey);
- 
-  // ✅ FIX: InitiateCheckout apenas aqui, não duplicado no clique
   px('InitiateCheckout',{content_name:'Código da Reconquista',value:47,currency:'BRL'});
  
   startTimer();
 }
  
-// ✅ FIX: Timer em memória (funciona em iOS Safari private mode)
 function startTimer(){
   const display=document.getElementById('timerDisplay');
- 
-  // Usa variável em memória como fonte principal
-  if(!timerEndTime || Date.now() > timerEndTime){
-    timerEndTime = Date.now() + (10*60*1000);
-    // tenta salvar no sessionStorage como backup
-    try{ sessionStorage.setItem('cdr_timer_end', timerEndTime.toString()); }catch(e){}
+  if(!timerEndTime||Date.now()>timerEndTime){
+    timerEndTime=Date.now()+(10*60*1000);
+    try{sessionStorage.setItem('cdr_timer_end',timerEndTime.toString());}catch(e){}
   }
- 
-  // Se veio do sessionStorage (recarregou a página)
   try{
-    const saved = sessionStorage.getItem('cdr_timer_end');
-    if(saved && !timerEndTime){
-      timerEndTime = parseInt(saved);
-    }
+    const saved=sessionStorage.getItem('cdr_timer_end');
+    if(saved&&!timerEndTime){timerEndTime=parseInt(saved);}
   }catch(e){}
  
   function updateDisplay(){
-    const remaining=Math.max(0, timerEndTime - Date.now());
+    const remaining=Math.max(0,timerEndTime-Date.now());
     const mins=Math.floor(remaining/60000);
     const secs=Math.floor((remaining%60000)/1000);
     display.textContent=String(mins).padStart(2,'0')+':'+String(secs).padStart(2,'0');
-    if(remaining<=60000) display.style.color='#E8857A';
+    if(remaining<=60000)display.style.color='#E8857A';
     if(remaining<=0){
       clearInterval(timerInterval);
       display.textContent='00:00';
       const expired=document.getElementById('timerExpired');
-      if(expired) expired.style.display='block';
+      if(expired)expired.style.display='block';
     }
   }
- 
   updateDisplay();
   timerInterval=setInterval(updateDisplay,1000);
 }
  
 function trackCheckout(){
-  // ✅ FIX: apenas Lead event no clique, Purchase não duplicar
   cl('cta_checkout_clicado','funil','cta_clicado');
 }
  
-// ─── LIVE COUNTER ───
-// ✅ FIX: seed baseado em hora para consistência
 function animateLiveCount(){
   const el=document.getElementById('liveCount');
   if(!el)return;
   const hour=new Date().getHours();
-  // Mais ativo durante o dia, menos de madrugada
-  const base=hour>=8&&hour<=22 ? 40+Math.floor(hour/2) : 18+Math.floor(Math.random()*12);
+  const base=hour>=8&&hour<=22?40+Math.floor(hour/2):18+Math.floor(Math.random()*12);
   el.textContent=base;
   setInterval(()=>{
     const delta=Math.floor(Math.random()*5)-2;
@@ -828,7 +790,6 @@ function animateLiveCount(){
 }
 animateLiveCount();
  
-// ─── SOCIAL PROOF POPUP ───
 const spData=[
   {name:'Ana Paula M. · SP',emoji:'💛',action:'acabou de',detail:'acessar o plano',time:'agora'},
   {name:'Larissa F. · RJ',emoji:'🌸',action:'começou o',detail:'plano de 21 dias',time:'2 min atrás'},
@@ -848,7 +809,6 @@ const spData=[
 ];
  
 let spIndex=Math.floor(Math.random()*spData.length);
- 
 function showSocialProof(){
   const popup=document.getElementById('spPopup');
   const data=spData[spIndex%spData.length];
@@ -860,14 +820,13 @@ function showSocialProof(){
   popup.classList.add('show');
   setTimeout(()=>popup.classList.remove('show'),5000);
 }
- 
 setTimeout(()=>{
   showSocialProof();
-  setInterval(showSocialProof, Math.random()*15000+30000);
+  setInterval(showSocialProof,Math.random()*15000+30000);
 },8000);
 </script>
  
-<!-- ✅ FIX VELOCIDADE: Clarity e Pixel no final — não bloqueiam renderização -->
+<!-- ✅ FIX LCP: Clarity com defer — não bloqueia renderização -->
 <script defer>
 (function(c,l,a,r,i,t,y){
   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -876,8 +835,9 @@ setTimeout(()=>{
 })(window,document,"clarity","script","vttfdv22wp");
 </script>
  
+<!-- ✅ FIX LCP: Pixel no DOMContentLoaded — não espera imagens quebrarem para disparar -->
 <script defer>
-window.addEventListener('load', function(){
+document.addEventListener('DOMContentLoaded', function(){
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
